@@ -19,10 +19,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserController {
 	@Autowired
 	UserService userService;
+	@RequestMapping("/findTest.html")
+	public @ResponseBody int getUser(int userId){
+		System.out.println("test2");
+		return userId;
+	}
 	@RequestMapping("/finduser.html")
 	public @ResponseBody String findUser(int userId){
 		User user =  userService.findUser(userId);
-		
+
 		return user.getName();
 	}
 	@RequestMapping("/adduser.html")
