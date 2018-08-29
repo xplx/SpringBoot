@@ -51,11 +51,6 @@ public class CreditServiceMockTest {
 		}catch(IllegalArgumentException e){
 			//应该抛出异常
 		}
-		
-		
-		
-
-
 	}
 	
 	@Test
@@ -71,7 +66,5 @@ public class CreditServiceMockTest {
 			return ;
 		}
 		Assert.fail();
-
-
 	}
 }

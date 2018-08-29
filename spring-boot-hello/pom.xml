@@ -66,6 +66,13 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!--如果不想每次都写private  final Logger logger =
+		LoggerFactory.getLogger(XXX.class); 可以用注解@Slf4j-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 	</dependencies>
 
 	<!--build 包含了多个插件 plugin，用来辅助项目构建。-->
