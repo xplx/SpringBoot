@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.druid.mapper.StatisticOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.example.druid.pojo.StatisticOrder" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="source" property="source" jdbcType="VARCHAR" />
+    <result column="actno" property="actno" jdbcType="VARCHAR" />
+    <result column="actname" property="actname" jdbcType="VARCHAR" />
+    <result column="channel" property="channel" jdbcType="INTEGER" />
+    <result column="clue" property="clue" jdbcType="VARCHAR" />
+    <result column="star_level" property="starLevel" jdbcType="VARCHAR" />
+    <result column="saledep" property="saledep" jdbcType="VARCHAR" />
+    <result column="style" property="style" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="syctime_day" property="syctimeDay" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, source, actno, actname, channel, clue, star_level, saledep, style, status, syctime_day
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from statistic_order
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from statistic_order
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.druid.pojo.StatisticOrder" >
+    insert into statistic_order (id, source, actno, 
+      actname, channel, clue, 
+      star_level, saledep, style, 
+      status, syctime_day)
+    values (#{id,jdbcType=BIGINT}, #{source,jdbcType=VARCHAR}, #{actno,jdbcType=VARCHAR}, 
+      #{actname,jdbcType=VARCHAR}, #{channel,jdbcType=INTEGER}, #{clue,jdbcType=VARCHAR}, 
+      #{starLevel,jdbcType=VARCHAR}, #{saledep,jdbcType=VARCHAR}, #{style,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{syctimeDay,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.druid.pojo.StatisticOrder" >
+    insert into statistic_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="source != null" >
+        source,
+      </if>
+      <if test="actno != null" >
+        actno,
+      </if>
+      <if test="actname != null" >
+        actname,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="clue != null" >
+        clue,
+      </if>
+      <if test="starLevel != null" >
+        star_level,
+      </if>
+      <if test="saledep != null" >
+        saledep,
+      </if>
+      <if test="style != null" >
+        style,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="syctimeDay != null" >
+        syctime_day,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="source != null" >
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="actno != null" >
+        #{actno,jdbcType=VARCHAR},
+      </if>
+      <if test="actname != null" >
+        #{actname,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=INTEGER},
+      </if>
+      <if test="clue != null" >
+        #{clue,jdbcType=VARCHAR},
+      </if>
+      <if test="starLevel != null" >
+        #{starLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="saledep != null" >
+        #{saledep,jdbcType=VARCHAR},
+      </if>
+      <if test="style != null" >
+        #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="syctimeDay != null" >
+        #{syctimeDay,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.druid.pojo.StatisticOrder" >
+    update statistic_order
+    <set >
+      <if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="actno != null" >
+        actno = #{actno,jdbcType=VARCHAR},
+      </if>
+      <if test="actname != null" >
+        actname = #{actname,jdbcType=VARCHAR},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=INTEGER},
+      </if>
+      <if test="clue != null" >
+        clue = #{clue,jdbcType=VARCHAR},
+      </if>
+      <if test="starLevel != null" >
+        star_level = #{starLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="saledep != null" >
+        saledep = #{saledep,jdbcType=VARCHAR},
+      </if>
+      <if test="style != null" >
+        style = #{style,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="syctimeDay != null" >
+        syctime_day = #{syctimeDay,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.druid.pojo.StatisticOrder" >
+    update statistic_order
+    set source = #{source,jdbcType=VARCHAR},
+      actno = #{actno,jdbcType=VARCHAR},
+      actname = #{actname,jdbcType=VARCHAR},
+      channel = #{channel,jdbcType=INTEGER},
+      clue = #{clue,jdbcType=VARCHAR},
+      star_level = #{starLevel,jdbcType=VARCHAR},
+      saledep = #{saledep,jdbcType=VARCHAR},
+      style = #{style,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      syctime_day = #{syctimeDay,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
