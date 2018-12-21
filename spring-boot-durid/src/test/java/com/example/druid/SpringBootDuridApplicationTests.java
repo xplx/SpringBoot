@@ -12,24 +12,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class SpringBootDuridApplicationTests {
 
-	@Autowired
-	private OrderService orderService;
-	@Test
-	public void contextLoads() {
-		while (true) {
-			StatisticOrder order = new StatisticOrder();
-			order.setSource("12");
-			order.setActno("123");
-			order.setActname("123");
-			order.setChannel(0);
-			order.setClue("ew");
-			order.setStarLevel("1");
-			order.setSaledep("df");
-			order.setStyle("dffg");
-			order.setStatus(0);
-			order.setSyctimeDay("2016-05-01");
-			orderService.saveOrderInfo(order);
-		}
-	}
+    @Autowired
+    private OrderService orderService;
 
+    @Test
+    public void contextLoads() {
+        StatisticOrder order = new StatisticOrder();
+        order.setSource("12");
+        order.setActno("123");
+        order.setActname("123");
+        order.setChannel(0);
+        order.setClue("ew");
+        order.setStarLevel("1");
+        order.setSaledep("df");
+        order.setStyle("dffg");
+        order.setStatus(0);
+        order.setSyctimeDay("2016-05-01");
+        orderService.saveOrderInfo(order);
+    }
 }
