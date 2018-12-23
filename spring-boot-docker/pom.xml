@@ -5,7 +5,7 @@
 
 	<groupId>com.example</groupId>
 	<artifactId>spring-boot-docker</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version> <!--这里需要版本号，要和Dockerfile一致。-->
 	<packaging>jar</packaging>
 
 	<name>spring-boot-docker</name>
@@ -43,6 +43,7 @@
 	</dependencies>
 
 	<build>
+		<!--<finalName></finalName>这里不能添加修改后名字，不然docker无法使用。-->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -68,6 +69,4 @@
 			<!-- Docker maven plugin -->
 		</plugins>
 	</build>
-
-
 </project>
