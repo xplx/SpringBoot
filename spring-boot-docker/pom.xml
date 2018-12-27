@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.example</groupId>
 	<artifactId>spring-boot-docker</artifactId>
-	<version>1.0</version> <!--这里需要版本号，要和Dockerfile一致。-->
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>spring-boot-docker</name>
@@ -40,10 +40,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<!--<finalName></finalName>这里不能添加修改后名字，不然docker无法使用。-->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -54,9 +58,23 @@
 				<groupId>com.spotify</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>1.0.0</version>
+				<!--这里构建docker镜像-->
+				<executions>
+					<execution>
+						<id>build-image</id>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+					<!--这里不需要加版本号，不然会出两个版本-->
+					<!-- <imageTags>${project.version}</imageTags>-->
 					<dockerDirectory>src/main/docker</dockerDirectory>
+					<!--构建docker镜像地址-->
+					<dockerHost>http://192.168.124.128:2375</dockerHost>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
@@ -69,4 +87,6 @@
 			<!-- Docker maven plugin -->
 		</plugins>
 	</build>
+
+
 </project>

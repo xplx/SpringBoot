@@ -1,0 +1,9 @@
+server:
+  port: 8080
+logging:
+  config: classpath:logback.xml
+spring:
+  application:
+    name: hello-docker
+  profiles:
+    active: dev
