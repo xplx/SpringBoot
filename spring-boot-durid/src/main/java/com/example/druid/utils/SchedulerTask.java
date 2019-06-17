@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Component
+//@Component
 public class SchedulerTask {
     private int count=0;
 
@@ -22,6 +22,6 @@ public class SchedulerTask {
      */
     @Scheduled(fixedRate = 6000)
     public void reportCurrentTime() {
-        System.out.println("现在时间：" + dateFormat.format(new Date()));
+       // System.out.println("现在时间：" + dateFormat.format(new Date()));
     }
 }
