@@ -1,0 +1,14 @@
+-------------------------------------------------------------------------------
+Test set: com.example.springbootmvc.controller.UserControllerTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 5.754 s <<< FAILURE! - in com.example.springbootmvc.controller.UserControllerTest
+testMvc(com.example.springbootmvc.controller.UserControllerTest)  Time elapsed: 0.208 s  <<< FAILURE!
+java.lang.AssertionError: Response content expected:<100> but was:<>
+	at com.example.springbootmvc.controller.UserControllerTest.testMvc(UserControllerTest.java:37)
+
+updateUser(com.example.springbootmvc.controller.UserControllerTest)  Time elapsed: 0.092 s  <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.success"
+	at com.example.springbootmvc.controller.UserControllerTest.updateUser(UserControllerTest.java:47)
+Caused by: java.lang.IllegalArgumentException: json can not be null or empty
+	at com.example.springbootmvc.controller.UserControllerTest.updateUser(UserControllerTest.java:47)
+

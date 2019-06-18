@@ -97,10 +97,10 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<!--为了保证actuator暴露的监控接口的安全性，需要添加安全控制的依赖spring-boot-start-security依赖-->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>
