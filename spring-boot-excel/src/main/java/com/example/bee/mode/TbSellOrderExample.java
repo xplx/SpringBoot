@@ -75,7 +75,7 @@ public class TbSellOrderExample {
     }
 
     /**
-     * tb_sell_order 2019-04-04
+     * tb_sell_order 2019-04-08
      */
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> criteria;
@@ -485,66 +485,6 @@ public class TbSellOrderExample {
 
         public Criteria andCollectionNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("collection not between", value1, value2, "collection");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeIsNull() {
-            addCriterion("change is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeIsNotNull() {
-            addCriterion("change is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeEqualTo(BigDecimal value) {
-            addCriterion("change =", value, "change");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeNotEqualTo(BigDecimal value) {
-            addCriterion("change <>", value, "change");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeGreaterThan(BigDecimal value) {
-            addCriterion("change >", value, "change");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeGreaterThanOrEqualTo(BigDecimal value) {
-            addCriterion("change >=", value, "change");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeLessThan(BigDecimal value) {
-            addCriterion("change <", value, "change");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeLessThanOrEqualTo(BigDecimal value) {
-            addCriterion("change <=", value, "change");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeIn(List<BigDecimal> values) {
-            addCriterion("change in", values, "change");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeNotIn(List<BigDecimal> values) {
-            addCriterion("change not in", values, "change");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("change between", value1, value2, "change");
-            return (Criteria) this;
-        }
-
-        public Criteria andChangeNotBetween(BigDecimal value1, BigDecimal value2) {
-            addCriterion("change not between", value1, value2, "change");
             return (Criteria) this;
         }
 
@@ -1400,7 +1340,7 @@ public class TbSellOrderExample {
     }
 
     /**
-     * tb_sell_order 2019-04-04
+     * tb_sell_order 2019-04-08
      */
     public static class Criterion {
         private String condition;

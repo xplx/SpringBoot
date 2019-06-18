@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-boot-hello" />
+        <module name="spring-boot-elastic" />
+        <module name="spring-boot-mvc" />
+        <module name="spring-boot-https" />
+        <module name="gogbee-server" />
+        <module name="spring-boot-mongo" />
+        <module name="spring-boot-generatorConfig" />
+        <module name="spring-boot-docker" />
+        <module name="https" />
+        <module name="spring-boot-excel" />
+        <module name="spring-boot-rabbitmq" />
+        <module name="spring-boot-jpa" />
+        <module name="spring-boot-durid" />
+        <module name="spring-boot-mq" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gogbee-server" target="1.8" />
+      <module name="https" target="1.8" />
+      <module name="spring-boot-docker" target="1.8" />
+      <module name="spring-boot-durid" target="1.8" />
+      <module name="spring-boot-elastic" target="1.8" />
+      <module name="spring-boot-excel" target="1.8" />
+      <module name="spring-boot-generatorConfig" target="1.8" />
+      <module name="spring-boot-hello" target="1.8" />
+      <module name="spring-boot-https" target="1.8" />
+      <module name="spring-boot-jpa" target="1.8" />
+      <module name="spring-boot-mongo" target="1.8" />
+      <module name="spring-boot-mq" target="1.8" />
+      <module name="spring-boot-mvc" target="1.8" />
+      <module name="spring-boot-parent" target="1.8" />
+      <module name="spring-boot-rabbitmq" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="spring-boot-jpa" options="-parameters" />
+    </option>
+  </component>
+</project>

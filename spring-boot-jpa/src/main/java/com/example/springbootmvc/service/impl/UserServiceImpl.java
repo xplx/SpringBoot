@@ -48,7 +48,6 @@ public class UserServiceImpl implements UserService {
 	public User findUser(int id) {
 		Optional<User> user = userDao.findById(id);
 		User u = new User();
-
 		return user.orElse(null);
 	}
 	

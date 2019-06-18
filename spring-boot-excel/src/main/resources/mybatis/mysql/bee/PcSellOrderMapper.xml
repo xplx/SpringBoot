@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bee.mapper.SellOrderMapper">
+  <select id="selectOrderBuyInfo" resultType="map">
+    SELECT
+        tbso.id,
+        tbso.sellOrder_no,
+        tbso.total_price,
+        u.username,
+        tbsoi.barcode,
+        tbsoi.buy_price
+    FROM
+        tb_sell_order tbso
+    LEFT JOIN tb_sell_order_item tbsoi ON tbso.id = tbsoi.sellOrder_id
+    LEFT JOIN USER u ON tbso.buy_id = u.id
+  </select>
+</mapper>

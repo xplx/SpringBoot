@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 /**
- * tb_sell_order 2019-04-04
+ * tb_sell_order 2019-04-08
  */
 public class TbSellOrder implements Serializable {
     /**
@@ -48,12 +48,6 @@ public class TbSellOrder implements Serializable {
      */
     @ApiModelProperty(value = "实付")
     private BigDecimal collection;
-
-    /**
-     * 找零
-     */
-    @ApiModelProperty(value = "找零")
-    private BigDecimal change;
 
     /**
      * 支付方式:1.现金，2.微信，3.支付宝,4.pos,-1 手机支付（不明确具体支付）, -2 未支付
@@ -238,22 +232,6 @@ public class TbSellOrder implements Serializable {
      */
     public void setCollection(BigDecimal collection) {
         this.collection = collection;
-    }
-
-    /**
-     * 获取找零
-     * @return change 找零
-     */
-    public BigDecimal getChange() {
-        return change;
-    }
-
-    /**
-     * 设置找零
-     * @param change 找零
-     */
-    public void setChange(BigDecimal change) {
-        this.change = change;
     }
 
     /**
@@ -492,7 +470,6 @@ public class TbSellOrder implements Serializable {
         sb.append(", integralAmount=").append(integralAmount);
         sb.append(", paidAmoun=").append(paidAmoun);
         sb.append(", collection=").append(collection);
-        sb.append(", change=").append(change);
         sb.append(", payWay=").append(payWay);
         sb.append(", sellorderType=").append(sellorderType);
         sb.append(", paymentStatus=").append(paymentStatus);
