@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitConfig {
     @Bean
     public Queue Queue() {
+        System.out.println("测试使用！");
         return new Queue("hello");
     }
 }

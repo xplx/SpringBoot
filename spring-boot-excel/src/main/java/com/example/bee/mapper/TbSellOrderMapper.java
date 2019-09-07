@@ -3,8 +3,11 @@ package com.example.bee.mapper;
 import com.example.bee.mode.TbSellOrder;
 import com.example.bee.mode.TbSellOrderExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+@Mapper
 public interface TbSellOrderMapper {
     long countByExample(TbSellOrderExample example);
 
@@ -27,4 +30,6 @@ public interface TbSellOrderMapper {
     int updateByPrimaryKeySelective(TbSellOrder record);
 
     int updateByPrimaryKey(TbSellOrder record);
+
+    List<Map<String, Object>>selectOrderBuyInfo();
 }

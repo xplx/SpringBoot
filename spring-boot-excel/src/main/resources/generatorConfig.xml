@@ -27,7 +27,7 @@
         <!--</commentGenerator>-->
 
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/orm" userId="root" password="123456">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/maven_ssm" userId="root" password="123456">
         </jdbcConnection>
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
            NUMERIC 类型解析为java.math.BigDecimal -->
@@ -46,7 +46,7 @@
            如果maven工程只是单独的一个工程，targetProject="src/main/java"
            若果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：
            targetProject="ecps-manager-mapper"，下同-->
-        <sqlMapGenerator targetPackage="bee" targetProject="src/main/resources/mybatis.mysql.bee">
+        <sqlMapGenerator targetPackage="bee" targetProject="src/main/resources/mybatis/mysql">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>

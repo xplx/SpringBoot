@@ -1,0 +1,1304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f6baea38-ef56-42ee-8a45-5dc4a8490d95" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/RedisSortController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my.log.2018-08-13.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my.log.2018-12-21.0.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-excel/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/controller/ExcelAliController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/controller/ExcelController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/controller/TbSellOrderController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mapper/TbSellOrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mapper/TbSellOrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mode/TbSellOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mode/TbSellOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mode/TbSellOrderExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mode/TbSellOrderExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/utils/MyBatisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/utils/MyBatisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-excel/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/resources/bootstrap.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/resources/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-excel/src/main/resources/generatorConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/main/resources/mybatis/mysql/bee/TbSellOrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-excel/src/main/resources/mybatis/mysql/bee/TbSellOrderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-excel/src/test/java/com/example/springbootexcel/SpringBootExcelApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/SpringboothelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/SpringboothelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/RedisTemplateCrontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/RedisTemplateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/StringRedisTemplateCrontroller.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/StringRedisTemplateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-rabbitmq/src/main/java/com/example/springbootrabbitmq/config/RabbitConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-rabbitmq/src/main/java/com/example/springbootrabbitmq/config/RabbitConfig.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/spring-boot-hello/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-mvc/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-db/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-durid/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-mq/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-docker/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-elastic/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-https/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-rabbitmq/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-mongo/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-excel/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-generatorConfig/target/" />
+    <ignored path="$PROJECT_DIR$/spring-boot-jpa/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CheckStyle-IDEA-workspace">
+    <option name="configuration">
+      <map>
+        <entry key="last-active-plugin-version" value="5.21.1" />
+      </map>
+    </option>
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/SpringBoot$SpringBootExcelApplication.coverage" NAME="SpringBootExcelApplication Coverage Results" MODIFIED="1551229975442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/controller/HelloWorldController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/SpringboothelloApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/gogbee-2019-04-04.log">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="9" column="41" lean-forward="true" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-boot-docker/src/main/resources/logback.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-boot-docker/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-boot-docker/src/main/resources/application-dev.yml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spring-boot-docker/src/main/resources/application-test.yml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/log/gogbee-debug-2019-04-04.log">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://D:/InstallSoft/jdk1.8/src.zip!/java/util/function/Consumer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="625">
+              <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Aspect" />
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>服务器错误,请联系管理员</find>
+      <find>getErrorMessage</find>
+      <find>em</find>
+      <find>BeetlSql</find>
+      <find>SendResult</find>
+      <find>{</find>
+      <find>elasticsearchTemplate</find>
+      <find>generator</find>
+      <find>logging.level</find>
+      <find>slf4j</find>
+      <find>myb</find>
+      <find>mybatis</find>
+      <find>https</find>
+      <find>mysql-connector-java</find>
+      <find>mysql-connector</find>
+      <find>poi</find>
+      <find>com.gzdsy.gogbee.bee.support.MyCommentGenerator</find>
+      <find>mybatis-spring-boot-starter</find>
+      <find>&lt;plugin</find>
+      <find>BaseResultMap</find>
+      <find>Ali</find>
+      <find>shopId</find>
+      <find>MyCommentGenerator</find>
+      <find>&lt;resultMap id=&quot;BaseResultMap&quot; type=&quot;com.example.springbootexcel.mode.TbSellOrder&quot;&gt;</find>
+      <find>gogbee-server</find>
+      <find>peng</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/spring-boot-mongo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-mq/src/main/java/com/example/springbootmq/bean/UsersModel.java" />
+        <option value="$PROJECT_DIR$/spring-boot-mq/src/main/java/com/example/springbootmq/bean/Users.java" />
+        <option value="$PROJECT_DIR$/spring-boot-mq/src/main/java/com/example/springbootmq/util/BeanToBean.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/vo/ReportDemandExportVO.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/vo/ReportSiteExportVO.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/utils/ExcelUtil.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/vo/ReportOrderExportVO.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/vo/ReportIndexStateDetailExportVO.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/vo/ReportHandOverExportVO.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/vo/MultiExcelModelvO.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/utils/ExcelPoiUtil.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/utils/ExcelEasyUtil.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/utils/ExcelAli/ExcelWriterFactroy.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/controller/bean/ImportInfo.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/mode/ImportInfo.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/vo/MultiExcelModelVo.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/resources/bootstrap.yml" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/controller/ExcelAliController.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/mode/TbSellOrder.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/controller/ExcelController.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/mapper/TbSellOrderMapper.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/vo/TbSellOrderVo.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/vo/TbSellOrderPoiVo.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/controller/TbSellOrderController.java" />
+        <option value="$PROJECT_DIR$/spring-boot-db/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-db/src/main/java/com/example/springbootmvc/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/spring-boot-db/src/main/java/com/example/springbootmvc/entity/Department.java" />
+        <option value="$PROJECT_DIR$/spring-boot-db/src/main/java/com/example/springbootmvc/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/spring-boot-db/src/main/java/com/example/springbootmvc/entity/UserVOVOVO.java" />
+        <option value="$PROJECT_DIR$/spring-boot-db/src/main/java/com/example/springbootmvc/entity/UserVOVOVO.sql" />
+        <option value="$PROJECT_DIR$/spring-boot-db/src/main/resources/codehelper.properties" />
+        <option value="$PROJECT_DIR$/spring-boot-db/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/spring-boot-db/src/main/java/com/example/springbootmvc/entity/User.java" />
+        <option value="$PROJECT_DIR$/spring-boot-jpa/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/resources/mybatis/mysql/bee/TbSellOrderMapper.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/utils/MyCommentGenerator.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/springbootexcel/utils/MyBatisConfig.java" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/resources/mybatis-config.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/spring-boot-excel/src/main/resources/generatorConfig.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-generatorConfig/src/main/java/com/gzdsy/gogbee/bee/model/TbSellOrder.java" />
+        <option value="$PROJECT_DIR$/spring-boot-generatorConfig/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-generatorConfig/.gitignore" />
+        <option value="$PROJECT_DIR$/spring-boot-rabbitmq/src/main/java/com/example/springbootrabbitmq/config/RabbitConfig.java" />
+        <option value="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/RedisSortCrontroller.java" />
+        <option value="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/StringRedisTemplateController.java" />
+        <option value="$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/RedisSortController.java" />
+        <option value="$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/SpringboothelloApplication.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="gogbee-server" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="gogbee-server" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="260" />
+    <option name="y" value="20" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SpringBoot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringBoot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringBoot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringBoot" type="462c0819:PsiDirectoryNode" />
+              <item name="log" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringBoot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringBoot" type="462c0819:PsiDirectoryNode" />
+              <item name="spring-boot-docker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringBoot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringBoot" type="462c0819:PsiDirectoryNode" />
+              <item name="spring-boot-docker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringBoot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringBoot" type="462c0819:PsiDirectoryNode" />
+              <item name="spring-boot-docker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringBoot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringBoot" type="462c0819:PsiDirectoryNode" />
+              <item name="spring-boot-docker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringBoot" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringBoot" type="462c0819:PsiDirectoryNode" />
+              <item name="spring-boot-docker" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1533721403352" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/spring-boot-excel/src/main/java/com" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/spring-boot-jpa" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.example.springbootmongo.service.impl" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.springbootmvc.controller.redis" />
+      <recent name="com.example.springbootmvc.entity" />
+      <recent name="com.example.springbootexcel.vo" />
+      <recent name="com.example.springbootexcel.utils" />
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\StudyPlace\SpringBoot\spring-boot-db\src\main\resources" />
+      <recent name="D:\StudyPlace\SpringBoot\spring-boot-excel\src\main\resources" />
+      <recent name="D:\StudyPlace\SpringBoot\spring-boot-excel\src\main\java\com\example\springbootexcel\mode" />
+      <recent name="D:\StudyPlace\SpringBoot\spring-boot-excel\src\main\java\com\example\springbootexcel\controller\bean" />
+      <recent name="D:\StudyPlace\SpringBoot\spring-boot-excel\src\main\java\com\example\springbootexcel\controller" />
+    </key>
+  </component>
+  <component name="RestServicesNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="Found 62 services " type="fcff1e1b:RestServiceStructure$RootNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringboothelloApplication">
+    <configuration name="BeanToBean" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.springbootmq.util.BeanToBean" />
+      <module name="spring-boot-mq" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.springbootmq.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeneratorStartUp (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GeneratorStartUp" />
+      <module name="spring-boot-generatorConfig" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeneratorStartUp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GeneratorStartUp" />
+      <module name="spring-boot-excel" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="compile-docker" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="-e" />
+                <option value="-U" />
+                <option value="package" />
+                <option value="-Dmaven.test.skip=true" />
+                <option value="-P" />
+                <option value="test" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$/spring-boot-docker" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="DruidApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-durid" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.druid.DruidApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GogbeeApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot-generatorConfig" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gzdsy.gogbee.bee.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gzdsy.gogbee.bee.GogbeeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GogbeeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="gogbee-server" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.gzdsy.gogbee.bee.GogbeeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootDockerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-docker" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springbootdocker.SpringBootDockerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootElasticApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-elastic" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springbootelastic.SpringBootElasticApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootExcelApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-excel" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.bee.SpringBootExcelApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootHttpsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="https" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.https.SpringBootHttpsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootMongoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-mongo" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springbootmongo.SpringBootMongoApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootMqApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-mq" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springbootmq.SpringBootMqApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootMvcApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="spring-boot-db" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.springbootmvc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springbootmvc.SpringBootMvcApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootRabbitmqApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-rabbitmq" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springbootrabbitmq.SpringBootRabbitmqApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringboothelloApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="spring-boot-hello" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.springboothello.SpringboothelloApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.BeanToBean" />
+      <item itemvalue="Application.GeneratorStartUp" />
+      <item itemvalue="Application.GeneratorStartUp (1)" />
+      <item itemvalue="Maven.compile-docker" />
+      <item itemvalue="Spring Boot.DruidApplication" />
+      <item itemvalue="Spring Boot.SpringBootMqApplication" />
+      <item itemvalue="Spring Boot.SpringBootDockerApplication" />
+      <item itemvalue="Spring Boot.SpringBootElasticApplication" />
+      <item itemvalue="Spring Boot.SpringboothelloApplication" />
+      <item itemvalue="Spring Boot.SpringBootRabbitmqApplication" />
+      <item itemvalue="Spring Boot.SpringBootMongoApplication" />
+      <item itemvalue="Spring Boot.SpringBootHttpsApplication" />
+      <item itemvalue="Spring Boot.SpringBootExcelApplication" />
+      <item itemvalue="Spring Boot.GogbeeApplication" />
+      <item itemvalue="Spring Boot.GogbeeApplication (1)" />
+      <item itemvalue="Spring Boot.SpringBootMvcApplication (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.SpringBootMvcApplication (1)" />
+        <item itemvalue="Application.GeneratorStartUp (1)" />
+        <item itemvalue="Spring Boot.GogbeeApplication (1)" />
+        <item itemvalue="Application.GeneratorStartUp" />
+        <item itemvalue="Application.BeanToBean" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6baea38-ef56-42ee-8a45-5dc4a8490d95" name="Default Changelist" comment="" />
+      <created>1533715896354</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1533715896354</updated>
+      <workItem from="1533715897695" duration="3345000" />
+      <workItem from="1533776829897" duration="178000" />
+      <workItem from="1533777024988" duration="156000" />
+      <workItem from="1533777331165" duration="3016000" />
+      <workItem from="1533780838112" duration="5298000" />
+      <workItem from="1533793590263" duration="7062000" />
+      <workItem from="1533863204279" duration="14077000" />
+      <workItem from="1534122049115" duration="3587000" />
+      <workItem from="1534385724230" duration="9119000" />
+      <workItem from="1534467653321" duration="1155000" />
+      <workItem from="1534471549358" duration="11496000" />
+      <workItem from="1534727657758" duration="3354000" />
+      <workItem from="1534813822386" duration="26000" />
+      <workItem from="1534919091844" duration="1942000" />
+      <workItem from="1534985685101" duration="2781000" />
+      <workItem from="1535337654962" duration="686000" />
+      <workItem from="1535418277555" duration="743000" />
+      <workItem from="1535440519092" duration="3083000" />
+      <workItem from="1536818941780" duration="728000" />
+      <workItem from="1545375070693" duration="384000" />
+      <workItem from="1545375680020" duration="4221000" />
+      <workItem from="1545380053707" duration="1222000" />
+      <workItem from="1545614167704" duration="57000" />
+      <workItem from="1545623247512" duration="2852000" />
+      <workItem from="1545639972392" duration="733000" />
+      <workItem from="1545717145446" duration="1987000" />
+      <workItem from="1545888880723" duration="2431000" />
+      <workItem from="1548138767291" duration="3636000" />
+      <workItem from="1548142426985" duration="461000" />
+      <workItem from="1548142899837" duration="3309000" />
+      <workItem from="1548214643507" duration="1296000" />
+      <workItem from="1548244689877" duration="5191000" />
+      <workItem from="1548322840360" duration="110000" />
+      <workItem from="1549004329956" duration="10716000" />
+      <workItem from="1550212742930" duration="2542000" />
+      <workItem from="1550652518514" duration="1264000" />
+      <workItem from="1551147238925" duration="8672000" />
+      <workItem from="1551161386036" duration="10536000" />
+      <workItem from="1552700678091" duration="922000" />
+      <workItem from="1553136399584" duration="64000" />
+      <workItem from="1553136508945" duration="599000" />
+      <workItem from="1553154345900" duration="1815000" />
+      <workItem from="1553667409717" duration="571000" />
+      <workItem from="1554275046183" duration="614000" />
+      <workItem from="1554342088093" duration="7036000" />
+      <workItem from="1554689672581" duration="617000" />
+      <workItem from="1555056580734" duration="1324000" />
+      <workItem from="1557110368981" duration="431000" />
+      <workItem from="1557111993664" duration="1895000" />
+      <workItem from="1557114486134" duration="823000" />
+      <workItem from="1557121034071" duration="687000" />
+      <workItem from="1557453494434" duration="896000" />
+      <workItem from="1560587374590" duration="374000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="RabbitMqHelloTest_hello - 2019.02.01 at 15h 35m 16s.xml">
+      <configuration name="RabbitMqHelloTest.hello" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDaoTest_findUserByPassWord - 2019.02.02 at 09h 53m 59s.xml">
+      <configuration name="UserDaoTest.findUserByPassWord" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDaoTest_findUserByUserName - 2019.02.02 at 09h 41m 39s.xml">
+      <configuration name="UserDaoTest.findUserByUserName" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDaoTest_findUserByUserName - 2019.02.02 at 09h 42m 24s.xml">
+      <configuration name="UserDaoTest.findUserByUserName" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDaoTest_findUserByUserName - 2019.02.02 at 09h 50m 45s.xml">
+      <configuration name="UserDaoTest.findUserByUserName" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDaoTest_testSaveUser - 2019.02.02 at 09h 38m 31s.xml">
+      <configuration name="UserDaoTest.testSaveUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDaoTest_updateUser - 2019.02.02 at 09h 56m 51s.xml">
+      <configuration name="UserDaoTest.updateUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDaoTest_updateUser - 2019.02.02 at 09h 58m 43s.xml">
+      <configuration name="UserDaoTest.updateUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDaoTest_updateUser - 2019.02.02 at 10h 00m 03s.xml">
+      <configuration name="UserDaoTest.updateUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserDaoTest_updateUser - 2019.02.02 at 10h 05m 35s.xml">
+      <configuration name="UserDaoTest.updateUser" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="152120000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21485837" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="JRebel" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.22383073" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.42093542" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.27709496" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
+      <window_info anchor="bottom" id="CheckStyle" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Statistic" order="11" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Spring" order="14" />
+      <window_info anchor="bottom" id="Terminal" order="15" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="16" visible="true" weight="0.32962137" />
+      <window_info anchor="bottom" id="Messages" order="17" weight="0.32849163" />
+      <window_info anchor="bottom" id="Database Changes" order="18" />
+      <window_info anchor="bottom" id="Tail" order="19" />
+      <window_info anchor="bottom" id="Sequence" order="20" />
+      <window_info anchor="bottom" id="SonarLint" order="21" />
+      <window_info anchor="bottom" id="Run with VisualVM" order="22" />
+      <window_info anchor="bottom" id="MyBatis Sql Log" order="23" />
+      <window_info anchor="bottom" id="JRebel Executor" order="24" />
+      <window_info anchor="bottom" id="JRebel Console" order="25" side_tool="true" />
+      <window_info anchor="bottom" id="Debug with VisualVM" order="26" />
+      <window_info anchor="right" id="aiXcoder" side_tool="true" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" sideWeight="0.49530202" visible="true" weight="0.18176973" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="right" id="Coverage" order="10" sideWeight="0.504698" side_tool="true" weight="0.15724947" />
+      <window_info anchor="right" id="Maven" order="11" />
+      <window_info anchor="right" id="Key Promoter X" order="12" weight="0.32995737" />
+      <window_info anchor="right" id="RestServices" order="13" weight="0.32995737" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15724947" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Web" order="6" side_tool="true" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3207127" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23608018" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.19599108" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="CheckStyle" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Spring" order="11" />
+      <window_info anchor="bottom" id="Terminal" order="12" />
+      <window_info active="true" anchor="bottom" id="Inspection Results" order="13" visible="true" weight="0.32962137" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.32850778" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" visible="true" weight="0.22014925" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Bean Validation" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/controller/FileUpload/FileUploadController.java</url>
+          <line>21</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/controller/rest/UserReditRestController.java</url>
+          <line>30</line>
+          <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/controller/conf/MvcConfigurer.java</url>
+          <line>61</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/controller/conf/ErrorController.java</url>
+          <line>42</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/service/impl/UserServiceImpl.java</url>
+          <line>68</line>
+          <properties />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-jpa/src/test/java/com/example/springbootmvc/db/UserDbTest.java</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-jpa/src/test/java/com/example/springbootmvc/controller/UserControllerTest.java</url>
+          <line>32</line>
+          <properties />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-jpa/src/test/java/com/example/springbootmvc/mock/CreditServiceMockTest.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/StringRedisTemplateController.java</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-mq/src/main/java/com/example/springbootmq/controlller/SendMsgController.java</url>
+          <line>24</line>
+          <properties />
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-elastic/src/main/java/com/example/springbootelastic/controller/RestClientController.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-elastic/src/main/java/com/example/springbootelastic/controller/ElasticDataController.java</url>
+          <line>28</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-elastic/src/main/java/com/example/springbootelastic/controller/ElasticDataController.java</url>
+          <line>78</line>
+          <properties />
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-elastic/src/main/java/com/example/springbootelastic/controller/ElasticDataController.java</url>
+          <line>43</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-elastic/src/main/java/com/example/springbootelastic/controller/ElasticDataController.java</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-mongo/src/main/java/com/example/springbootmongo/service/impl/UserDaoImpl.java</url>
+          <line>50</line>
+          <properties />
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/controller/ExcelController.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/entity/UserVO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/service/impl/CreditSystemServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/test/java/com/example/springbootexcel/SpringBootExcelApplicationTests.java" />
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/test/java/GeneratorStartUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/vo/MultiExcelModelVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="49" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/vo/TbSellOrderPoiVo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="288" selection-start-line="288" selection-end-line="288" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mode/ImportInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/SpringBootExcelApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/resources/mybatis/mysql/bee/TbSellOrderMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10649">
+          <caret line="463" column="11" selection-start-line="463" selection-start-column="11" selection-end-line="463" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/resources/mybatis/mysql/bee/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1554362199493" expanded="true" signature="3440:3540" ph="select from user" />
+            <marker date="1554362199493" expanded="true" signature="3626:3680" ph="delete from " />
+            <marker date="1554362199493" expanded="true" signature="3778:3794" ph="delete from " />
+            <marker date="1554362199493" expanded="true" signature="3968:4162" ph="insert into user... " />
+            <marker date="1554362199493" expanded="true" signature="5114:5139" ph="select count... user" />
+            <marker date="1554362199493" expanded="true" signature="5939:6158" ph="update user " />
+            <marker date="1554362199493" expanded="true" signature="6363:6726" ph="update user " />
+            <marker date="1554362199493" expanded="true" signature="6820:7014" ph="update user " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/resources/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/utils/MyBatisConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mapper/TbSellOrderMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/utils/MyCommentGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="8" selection-start-column="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-generatorConfig/src/main/docker/Dockerfile" />
+    <entry file="file://$PROJECT_DIR$/spring-boot-generatorConfig/src/main/doc/清理数据库.txt" />
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/resources/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="18" column="53" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-generatorConfig/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-generatorConfig/src/main/test/GeneratorStartUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="20" column="2" selection-start-line="20" selection-start-column="2" selection-end-line="20" selection-end-column="2" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-generatorConfig/src/main/java/com/gzdsy/gogbee/bee/model/TbSellOrder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="20" column="7" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-generatorConfig/src/main/java/com/gzdsy/gogbee/bee/GogbeeApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-generatorConfig/src/main/java/com/gzdsy/gogbee/bee/model/TbSellOrderExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mode/ExportInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mode/TbSellOrder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/java/com/example/bee/mode/TbSellOrderExample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-generatorConfig/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-rabbitmq/src/main/java/com/example/springbootrabbitmq/config/RabbitConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/PropertyController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="30" column="36" selection-start-line="30" selection-start-column="36" selection-end-line="30" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/InstallSoft/jdk1.8/src.zip!/java/util/Optional.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="49" column="19" selection-start-line="49" selection-start-column="19" selection-end-line="49" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-336">
+          <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#21#1" expanded="true" />
+            <element signature="e#0#28#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-excel/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="14" lean-forward="true" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/SpringBootMvcApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding>
+            <element signature="e#261#262#0" expanded="true" />
+            <element signature="e#327#328#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/RedisTemplateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/StringRedisTemplateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/my.log" />
+    <entry file="file://$PROJECT_DIR$/spring-boot-jpa/src/main/java/com/example/springbootmvc/controller/redis/RedisSortController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="24" column="31" lean-forward="true" selection-start-line="24" selection-start-column="31" selection-end-line="24" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="50">
+            <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/controller/HelloWorldController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/InstallSoft/jdk1.8/src.zip!/java/util/function/Consumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-hello/src/main/java/com/example/springboothello/SpringboothelloApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/gogbee-debug-2019-04-04.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/log/gogbee-2019-04-04.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="41" lean-forward="true" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-docker/src/main/resources/logback.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-docker/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-docker/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-boot-docker/src/main/resources/application-test.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>spring-boot-db</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: ch.qos.logback:logback-classic:1.2.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

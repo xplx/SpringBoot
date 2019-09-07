@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/spring-boot-docker" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-durid" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-elastic" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-excel" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-generatorConfig" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-hello" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-https" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-jpa" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-mongo" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-mq" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-boot-rabbitmq" charset="UTF-8" />
+  </component>
+</project>

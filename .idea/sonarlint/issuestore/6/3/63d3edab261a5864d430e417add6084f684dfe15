@@ -1,0 +1,23 @@
+
+¢%squid:RedundantThrowsDeclarationCheck,"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(¿ö¬Èøÿÿÿÿ
+¦%squid:RedundantThrowsDeclarationCheckQ"vRemove the declaration of thrown exception 'org.springframework.dao.DataAccessException' which is a runtime exception.(×ë
+^squid:S00112H"FDefine and throw a dedicated exception instead of using a generic one.(–‰é©
+_squid:S1192("HDefine a constant instead of duplicating this literal "success" 4 times.(ùØ
+%squid:RedundantThrowsDeclarationCheck"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ûÇÍ¦
+¢%squid:RedundantThrowsDeclarationCheckN"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ùò‡Œøÿÿÿÿ
+wsquid:S1488"[Immediately return this expression instead of assigning it to the temporary variable "str".(â¼Æƒùÿÿÿÿ
+¢%squid:RedundantThrowsDeclarationCheck$"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(çÓÒ‚úÿÿÿÿ
+hsquid:S1192&"QDefine a constant instead of duplicating this literal "platform:message" 3 times.(¡ı˜Œ
+^squid:S001123"FDefine and throw a dedicated exception instead of using a generic one.(µõş‚
+^squid:S001129"FDefine and throw a dedicated exception instead of using a generic one.(ş•ï
+csquid:S00112?"FDefine and throw a dedicated exception instead of using a generic one.(­ä¦™ıÿÿÿÿ
+csquid:S00112,"FDefine and throw a dedicated exception instead of using a generic one.(¿ö¬Èøÿÿÿÿ
+wsquid:S1488-"[Immediately return this expression instead of assigning it to the temporary variable "str".(óÛÂîÿÿÿÿÿ
+csquid:S00112U"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ
+¢%squid:RedundantThrowsDeclarationCheck?"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(­ä¦™ıÿÿÿÿ
+wsquid:S1488:"[Immediately return this expression instead of assigning it to the temporary variable "str".(ÍÔĞÿÿÿÿÿ
+%squid:RedundantThrowsDeclarationCheckH"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(–‰é©
+^squid:S00112"FDefine and throw a dedicated exception instead of using a generic one.(ûÇÍ¦
+csquid:S00112$"FDefine and throw a dedicated exception instead of using a generic one.(çÓÒ‚úÿÿÿÿ
+%squid:RedundantThrowsDeclarationCheck9"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(ş•ï
+csquid:S00112N"FDefine and throw a dedicated exception instead of using a generic one.(ùò‡Œøÿÿÿÿ

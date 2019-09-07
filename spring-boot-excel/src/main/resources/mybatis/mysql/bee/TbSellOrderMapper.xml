@@ -8,7 +8,6 @@
     <result column="integral_amount" jdbcType="DECIMAL" property="integralAmount" />
     <result column="paid_amoun" jdbcType="DECIMAL" property="paidAmoun" />
     <result column="collection" jdbcType="DECIMAL" property="collection" />
-    <result column="change" jdbcType="DECIMAL" property="change" />
     <result column="pay_way" jdbcType="INTEGER" property="payWay" />
     <result column="sellOrder_type" jdbcType="INTEGER" property="sellorderType" />
     <result column="payment_status" jdbcType="INTEGER" property="paymentStatus" />
@@ -83,7 +82,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, sellOrder_no, total_price, integral_amount, paid_amoun, collection, change, pay_way, 
+    id, sellOrder_no, total_price, integral_amount, paid_amoun, collection, pay_way, 
     sellOrder_type, payment_status, sellOrder_status, buy_id, shop_id, shopHq_id, cashier_id, 
     create_time, update_time, empty, order_preferential, member_preferential, member_order_type
   </sql>
@@ -120,20 +119,18 @@
   <insert id="insert" parameterType="com.example.bee.mode.TbSellOrder">
     insert into tb_sell_order (id, sellOrder_no, total_price, 
       integral_amount, paid_amoun, collection, 
-      change, pay_way, sellOrder_type, 
-      payment_status, sellOrder_status, buy_id, 
-      shop_id, shopHq_id, cashier_id, 
-      create_time, update_time, empty, 
-      order_preferential, member_preferential, 
-      member_order_type)
+      pay_way, sellOrder_type, payment_status, 
+      sellOrder_status, buy_id, shop_id, 
+      shopHq_id, cashier_id, create_time, 
+      update_time, empty, order_preferential, 
+      member_preferential, member_order_type)
     values (#{id,jdbcType=BIGINT}, #{sellorderNo,jdbcType=VARCHAR}, #{totalPrice,jdbcType=DECIMAL}, 
       #{integralAmount,jdbcType=DECIMAL}, #{paidAmoun,jdbcType=DECIMAL}, #{collection,jdbcType=DECIMAL}, 
-      #{change,jdbcType=DECIMAL}, #{payWay,jdbcType=INTEGER}, #{sellorderType,jdbcType=INTEGER}, 
-      #{paymentStatus,jdbcType=INTEGER}, #{sellorderStatus,jdbcType=INTEGER}, #{buyId,jdbcType=BIGINT}, 
-      #{shopId,jdbcType=BIGINT}, #{shophqId,jdbcType=BIGINT}, #{cashierId,jdbcType=BIGINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{empty,jdbcType=DECIMAL}, 
-      #{orderPreferential,jdbcType=DECIMAL}, #{memberPreferential,jdbcType=DECIMAL}, 
-      #{memberOrderType,jdbcType=INTEGER})
+      #{payWay,jdbcType=INTEGER}, #{sellorderType,jdbcType=INTEGER}, #{paymentStatus,jdbcType=INTEGER}, 
+      #{sellorderStatus,jdbcType=INTEGER}, #{buyId,jdbcType=BIGINT}, #{shopId,jdbcType=BIGINT}, 
+      #{shophqId,jdbcType=BIGINT}, #{cashierId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{empty,jdbcType=DECIMAL}, #{orderPreferential,jdbcType=DECIMAL}, 
+      #{memberPreferential,jdbcType=DECIMAL}, #{memberOrderType,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.example.bee.mode.TbSellOrder">
     insert into tb_sell_order
@@ -155,9 +152,6 @@
       </if>
       <if test="collection != null">
         collection,
-      </if>
-      <if test="change != null">
-        change,
       </if>
       <if test="payWay != null">
         pay_way,
@@ -220,9 +214,6 @@
       </if>
       <if test="collection != null">
         #{collection,jdbcType=DECIMAL},
-      </if>
-      <if test="change != null">
-        #{change,jdbcType=DECIMAL},
       </if>
       <if test="payWay != null">
         #{payWay,jdbcType=INTEGER},
@@ -295,9 +286,6 @@
       <if test="record.collection != null">
         collection = #{record.collection,jdbcType=DECIMAL},
       </if>
-      <if test="record.change != null">
-        change = #{record.change,jdbcType=DECIMAL},
-      </if>
       <if test="record.payWay != null">
         pay_way = #{record.payWay,jdbcType=INTEGER},
       </if>
@@ -353,7 +341,6 @@
       integral_amount = #{record.integralAmount,jdbcType=DECIMAL},
       paid_amoun = #{record.paidAmoun,jdbcType=DECIMAL},
       collection = #{record.collection,jdbcType=DECIMAL},
-      change = #{record.change,jdbcType=DECIMAL},
       pay_way = #{record.payWay,jdbcType=INTEGER},
       sellOrder_type = #{record.sellorderType,jdbcType=INTEGER},
       payment_status = #{record.paymentStatus,jdbcType=INTEGER},
@@ -389,9 +376,6 @@
       </if>
       <if test="collection != null">
         collection = #{collection,jdbcType=DECIMAL},
-      </if>
-      <if test="change != null">
-        change = #{change,jdbcType=DECIMAL},
       </if>
       <if test="payWay != null">
         pay_way = #{payWay,jdbcType=INTEGER},
@@ -445,7 +429,6 @@
       integral_amount = #{integralAmount,jdbcType=DECIMAL},
       paid_amoun = #{paidAmoun,jdbcType=DECIMAL},
       collection = #{collection,jdbcType=DECIMAL},
-      change = #{change,jdbcType=DECIMAL},
       pay_way = #{payWay,jdbcType=INTEGER},
       sellOrder_type = #{sellorderType,jdbcType=INTEGER},
       payment_status = #{paymentStatus,jdbcType=INTEGER},
@@ -462,4 +445,12 @@
       member_order_type = #{memberOrderType,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectOrderBuyInfo" resultType="map">
+    SELECT
+    tbso.id,
+    tbso.sellOrder_no,
+    tbso.total_price
+    FROM
+    tb_sell_order tbso
+  </select>
 </mapper>
