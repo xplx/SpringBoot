@@ -1,22 +1,0 @@
-
-Ysquid:S1854G"=Remove this useless assignment to local variable "totalPage".(°ÚÎŠøÿÿÿÿ
-Nsquid:S1854]"8Remove this useless assignment to local variable "list".(ªÉl
-bsquid:CommentedOutCodeLineW"<This block of commented-out lines of code should be removed.(œÚé‰
-Qsquid:UnusedPrivateMethod\",Remove this unused private "getUser" method.(ˆˆ½È
-bsquid:CommentedOutCodeLineY"<This block of commented-out lines of code should be removed.(µèïµ
-ysquid:S1488“"\Immediately return this expression instead of assigning it to the temporary variable "list".(ÎöÖŒüÿÿÿÿ
-Isquid:S1481I"-Remove this unused "realSize" local variable.(ÊËŞ½şÿÿÿÿ
-?squid:S1481]")Remove this unused "list" local variable.(ªÉl
-Ssquid:S1854^"7Remove this useless assignment to local variable "ids".(¤øªÂúÿÿÿÿ
-Dsquid:S1481^"(Remove this unused "ids" local variable.(¤øªÂúÿÿÿÿ
-Fsquid:S1481K"*Remove this unused "count" local variable.(³ñˆŸúÿÿÿÿ
-Usquid:S1854K"9Remove this useless assignment to local variable "count".(³ñˆŸúÿÿÿÿ
-Xsquid:S1854I"<Remove this useless assignment to local variable "realSize".(ÊËŞ½şÿÿÿÿ
-osquid:S2293k"YReplace the type specification in this constructor call with the diamond operator ("<>").(ĞôŒ'
-Jsquid:S1481G".Remove this unused "totalPage" local variable.(°ÚÎŠøÿÿÿÿ
-csquid:CommentedOutCodeLine‰"<This block of commented-out lines of code should be removed.(å«€©
-=squid:S14812"&Remove this unused "u" local variable.(¨È©¦
-ysquid:S1488Š"\Immediately return this expression instead of assigning it to the temporary variable "list".(Õ¿ä”ÿÿÿÿÿ
-rsquid:S1488{"[Immediately return this expression instead of assigning it to the temporary variable "ret".(¥•ÎÅ
-Bsquid:S1481_"&Remove this unused "a" local variable.(–ÎåÌûÿÿÿÿ
-Lsquid:S18542"5Remove this useless assignment to local variable "u".(¨È©¦

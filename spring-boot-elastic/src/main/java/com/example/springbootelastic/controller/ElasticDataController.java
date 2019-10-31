@@ -40,12 +40,14 @@ public class ElasticDataController {
 	@RequestMapping("/springdata/save")
 	public String save(){
 		BookEntity book = new BookEntity();
-		book.setId("2");
-		book.setMessage("多彩贵州");
-		book.setName("贵州");
-		book.setType("address");
-		book.setPostDate(new Date());
-		dao.save(book);
+		for (int i = 0; i < 100; i++) {
+			book.setId(String.valueOf(i));
+			book.setMessage("多彩贵州");
+			book.setName("贵州");
+			book.setType("address");
+			book.setPostDate(new Date());
+			dao.save(book);
+		}
 		return "success";
 	}
 

@@ -1,0 +1,39 @@
+server:
+  port: 8010
+
+jwt:
+  token-header: Authorization
+  expire: 14400
+  rsa-secret: xx1WET12^%3^(WE45
+
+client:
+  id: ace-auth
+  secret: 123456
+  token-header: x-client-token
+  expire: 14400
+  rsa-secret: x2318^^(*WRYQWR(QW&T
+
+spring:
+  redis:
+    database: 2
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    pool:
+    max-active: 20
+    password: 123456
+
+#redis-cache 相关
+redis:
+  pool:
+    maxActive: 300
+    maxIdle: 100
+    maxWait: 1000
+  host: ${REDIS_HOST:localhost}
+  port:  ${REDIS_PORT:6379}
+  password: 123456
+  timeout: 2000
+  # 服务或应用名
+  sysName: ace-admin
+  enable: true
+  database: 0
+

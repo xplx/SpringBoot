@@ -1,4 +1,6 @@
 <configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    
     <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread%X{sourceThread}]%logger{24} - %msg%n"/>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -6,6 +8,32 @@
         </encoder>
     </appender>
 
+    <!--日志收集-->
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>192.168.124.128:4560</destination>
+        <!-- 日志输出编码 -->
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp>
+                    <timeZone>UTC</timeZone>
+                </timestamp>
+                <pattern>
+                    <pattern>
+                        {
+                        "logLevel": "%level",
+                        "serviceName": "${springAppName:-}",
+                        "pid": "${PID:-}",
+                        "thread": "%thread",
+                        "class": "%logger{40}",
+                        "host": "${spring.cloud.client.ip-address}:-",
+                        "rest": "%message"
+                        }
+                    </pattern>
+                </pattern>
+            </providers>
+        </encoder>
+    </appender>
+    
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>/export/logs/demo/log.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -61,5 +89,6 @@
         <appender-ref ref="STDOUT"/>
         <appender-ref ref="FILE"/>
         <appender-ref ref="ERROR_FILE"/>
+        <appender-ref ref="LOGSTASH"/>
     </root>
 </configuration>
