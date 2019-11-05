@@ -33,7 +33,7 @@ public class UserInfoController {
     @ApiImplicitParams({
         @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "id", value = "id")
     })
-    public Result detail(@RequestParam Integer id) {
+    public Result<UserInfo> detail(@RequestParam Integer id) {
         UserInfo userInfo = new UserInfo();
         try{
             userInfo = userInfoService.findById(id);
@@ -46,7 +46,7 @@ public class UserInfoController {
 
     @ApiOperation(value = "获取信息（list不分页）")
     @GetMapping("/list")
-    public Result list() {
+    public Result<List<UserInfo>> list() {
         List<UserInfo> list = new ArrayList<>();
         try{
             list = userInfoService.findAll();
@@ -63,7 +63,7 @@ public class UserInfoController {
         @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "pageNum", value = "起始页"),
         @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "pageSize", value = "页大小")
     })
-    public Result listPages(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
+    public Result<List<UserInfo>> listPages(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
         List<UserInfo> list = new ArrayList<>();
         try{
             PageHelper.startPage(pageNum, pageSize);

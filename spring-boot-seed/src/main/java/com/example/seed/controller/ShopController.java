@@ -33,7 +33,7 @@ public class ShopController {
     @ApiImplicitParams({
         @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "id", value = "id")
     })
-    public Result detail(@RequestParam Integer id) {
+    public Result<Shop> detail(@RequestParam Integer id) {
         Shop shop = new Shop();
         try{
             shop = shopService.findById(id);
@@ -46,9 +46,8 @@ public class ShopController {
 
     @ApiOperation(value = "获取信息（list不分页）")
     @GetMapping("/list")
-    public Result list() {
+    public Result<List<Shop>> list() {
         List<Shop> list = new ArrayList<>();
-        log.info("123");
         try{
             list = shopService.findAll();
         }catch (Exception e) {
@@ -64,7 +63,7 @@ public class ShopController {
         @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "pageNum", value = "起始页"),
         @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "pageSize", value = "页大小")
     })
-    public Result listPages(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
+    public Result<List<Shop>> listPages(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
         List<Shop> list = new ArrayList<>();
         try{
             PageHelper.startPage(pageNum, pageSize);

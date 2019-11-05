@@ -33,7 +33,7 @@ public class ${modelNameUpperCamel}Controller {
     @ApiImplicitParams({
         @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "id", value = "id")
     })
-    public Result detail(@RequestParam Integer id) {
+    public Result<${modelNameUpperCamel}> detail(@RequestParam Integer id) {
         ${modelNameUpperCamel} ${modelNameLowerCamel} = new ${modelNameUpperCamel}();
         try{
             ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
@@ -46,7 +46,7 @@ public class ${modelNameUpperCamel}Controller {
 
     @ApiOperation(value = "获取信息（list不分页）")
     @GetMapping("/list")
-    public Result list() {
+    public Result<List<${modelNameUpperCamel}>> list() {
         List<${modelNameUpperCamel}> list = new ArrayList<>();
         try{
             list = ${modelNameLowerCamel}Service.findAll();
@@ -63,7 +63,7 @@ public class ${modelNameUpperCamel}Controller {
         @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "pageNum", value = "起始页"),
         @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "pageSize", value = "页大小")
     })
-    public Result listPages(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
+    public Result<List<${modelNameUpperCamel}>> listPages(@RequestParam(defaultValue = "1") Integer pageNum, @RequestParam(defaultValue = "10") Integer pageSize) {
         List<${modelNameUpperCamel}> list = new ArrayList<>();
         try{
             PageHelper.startPage(pageNum, pageSize);
