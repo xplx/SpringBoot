@@ -31,6 +31,7 @@ public class UserReditRestController {
         if (result.hasErrors()) {
             List<ObjectError> list = result.getAllErrors();
             FieldError error = (FieldError)list.get(0);
+            System.out.println("1");
             System.out.println(error.getObjectName()+","+error.getField()+","+error.getDefaultMessage());
         }
         System.out.println("用户id：" + user.getId()+ "用户姓名：" + user.getName() + "时间：" + user.getTime());
