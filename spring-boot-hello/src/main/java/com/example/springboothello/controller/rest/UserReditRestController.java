@@ -35,6 +35,7 @@ public class UserReditRestController {
             System.out.println("2");
             System.out.println("3");
             System.out.println("4");
+            System.out.println("5");
             System.out.println(error.getObjectName()+","+error.getField()+","+error.getDefaultMessage());
         }
         System.out.println("用户id：" + user.getId()+ "用户姓名：" + user.getName() + "时间：" + user.getTime());
