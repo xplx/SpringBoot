@@ -2,12 +2,12 @@ package com.example.mybatis.model;
 
 import java.io.Serializable;
 
-public class Shop implements Serializable {
+public class User implements Serializable {
     private Integer id;
 
-    private Integer openId;
+    private String username;
 
-    private Integer shopId;
+    private String password;
 
     private static final long serialVersionUID = 1L;
 
@@ -19,20 +19,20 @@ public class Shop implements Serializable {
         this.id = id;
     }
 
-    public Integer getOpenId() {
-        return openId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setOpenId(Integer openId) {
-        this.openId = openId;
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
-    public Integer getShopId() {
-        return shopId;
+    public String getPassword() {
+        return password;
     }
 
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
     }
 
     @Override
@@ -42,8 +42,8 @@ public class Shop implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", openId=").append(openId);
-        sb.append(", shopId=").append(shopId);
+        sb.append(", username=").append(username);
+        sb.append(", password=").append(password);
         sb.append("]");
         return sb.toString();
     }

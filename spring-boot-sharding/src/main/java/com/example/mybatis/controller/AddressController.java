@@ -1,14 +1,16 @@
 package com.example.mybatis.controller;
 
+
 import com.example.mybatis.model.Shop;
+import com.example.mybatis.model.TAddress;
+import com.example.mybatis.service.AddressService;
 import com.example.mybatis.service.ShopService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * @author wuxiaopeng
@@ -17,13 +19,18 @@ import java.util.List;
  */
 @RestController
 @Slf4j
-@RequestMapping("/shop")
-public class ShopController {
+@RequestMapping("/address")
+public class AddressController {
     @Autowired
-    private ShopService shopService;
+    private AddressService addressService;
+
     @GetMapping("/list")
-    public List<Shop> list(Integer id){
-        List<Shop> shopList = shopService.list(id);
-        return shopList;
+    public Object list(Long id){
+        return addressService.list(id);
+    }
+
+    @PostMapping("/save")
+    public void save(TAddress address){
+        addressService.save(address);
     }
 }

@@ -46,13 +46,16 @@ public class ShopController {
 
     @ApiOperation(value = "获取信息（list不分页）")
     @GetMapping("/list")
-    public Result<List<Shop>> list() {
+    public Result<List<Shop>> list(String shopId) {
         List<Shop> list = new ArrayList<>();
         try{
             list = shopService.findAll();
+            if (true) {
+                throw new Exception();
+            }
         }catch (Exception e) {
-            log.error("ShopController 获取信息异常:{}", e);
-            return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("ShopController 获取信息异常!");
+            log.error("获取店铺信息,入参:[{}] \n异常:", shopId, e);
+            return Result.failure().setMsg("ShopController 获取信息异常!");
         }
         return Result.ok().setData(list);
     }
@@ -70,7 +73,7 @@ public class ShopController {
             list = shopService.findAll();
         }catch (Exception e) {
             log.error("ShopController 获取信息异常:{}", e);
-            return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("ShopController 获取信息异常!");
+            //return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("ShopController 获取信息异常!");
         }
         PageInfo pageInfo = new PageInfo(list);
         return Result.ok().setData(pageInfo);

@@ -1,5 +1,6 @@
 package com.example.mybatis.service;
 
+
 import com.example.mybatis.model.Shop;
 
 import java.util.List;
@@ -15,5 +16,6 @@ public interface ShopService {
      * @param id
      * @return
      */
-    List<Shop> list(Integer id);
+    Shop list(Integer id);
+    void save(Shop shop);
 }

@@ -1,0 +1,86 @@
+#配置数据库分表
+spring:
+  main:
+    allow-bean-definition-overriding: true
+sharding:
+  jdbc:
+    dataSource:
+      names: ds-master-0,ds-master-1,ds-master-0-slave-0,ds-master-0-slave-1,ds-master-1-slave-0,ds-master-1-slave-1
+      # 配置主库
+      ds-master-0: #org.apache.tomcat.jdbc.pool.DataSource
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.124.128:3306/cool?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        maxPoolSize: 20
+      ds-master-0-slave-0: #org.apache.tomcat.jdbc.pool.DataSource
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.124.129:3306/cool?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        maxPoolSize: 20
+      ds-master-0-slave-1: #org.apache.tomcat.jdbc.pool.DataSource
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.124.130:3306/cool?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        maxPoolSize: 20
+      ds-master-1: #org.apache.tomcat.jdbc.pool.DataSource
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.124.128:3306/cool2?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        maxPoolSize: 20
+      ds-master-1-slave-0: #org.apache.tomcat.jdbc.pool.DataSource
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.124.129:3306/cool2?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        maxPoolSize: 20
+      ds-master-1-slave-1: #org.apache.tomcat.jdbc.pool.DataSource
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://192.168.124.130:3306/cool2?useUnicode=true&characterEncoding=utf8&tinyInt1isBit=false&useSSL=false&serverTimezone=GMT
+        username: root
+        password: 123456
+        maxPoolSize: 20
+    config:
+      sharding:
+#        default-database-strategy:
+#          inline:
+#            #配置分库策略，id进行分库
+#            sharding-column: id
+#            #配置的分库的逻辑，根据id%2进行分。
+#            algorithm-expression: ds_$->{id % 2}
+        tables:
+          #配置表
+          user:
+            #配置的是user表在真实数据库中的位置
+            actual-data-nodes: ds_$->{0..1}.user_$->{0..4}
+            table-strategy:
+              inline:
+                #配置user表数据切分的字段
+                sharding-column: id
+                #配置user表数据切分的策略。
+                algorithm-expression: user_$->{id % 5}
+            #自动生成id。
+            key-generator-column-name: id
+          shop:
+            #配置表的具体位置
+            actual-data-nodes: ds_0.shop
+          t_address:
+            actual-data-nodes: ds_1.t_address
+        master-slave-rules:
+          ds_0:
+            master-data-source-name: ds-master-0
+            slave-data-source-names: ds-master-0-slave-0, ds-master-0-slave-1
+          ds_1:
+            master-data-source-name: ds-master-1
+            slave-data-source-names: ds-master-1-slave-0, ds-master-1-slave-1
+server:
+  port: 8888

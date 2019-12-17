@@ -1,10 +1,11 @@
 package com.example.mybatis.service.impl;
 
-import com.ace.cache.annotation.Cache;
+
 import com.example.mybatis.mapper.ShopMapper;
 import com.example.mybatis.model.Shop;
 import com.example.mybatis.service.ShopService;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -19,9 +20,12 @@ public class ShopServiceImpl implements ShopService {
     private ShopMapper shopMapper;
 
     @Override
-    //@Cache(key="shopInfo")
-    public List<Shop> list(Integer id) {
-        List<Shop> shopList = shopMapper.getShopList();
-        return shopList;
+    public Shop list(Integer id) {
+        return shopMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void save(Shop shop) {
+        shopMapper.insertSelective(shop);
     }
 }

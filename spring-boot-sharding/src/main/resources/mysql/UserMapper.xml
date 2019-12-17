@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.mybatis.mapper.ShopMapper">
-  <resultMap id="BaseResultMap" type="com.example.mybatis.model.Shop">
+<mapper namespace="com.example.mybatis.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.example.mybatis.model.User">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="open_id" jdbcType="INTEGER" property="openId" />
-    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, open_id, shop_id
+    id, username, password
   </sql>
-  <select id="selectByExample" parameterType="com.example.mybatis.model.ShopExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.mybatis.model.UserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from shop
+    from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -84,67 +84,67 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from shop
+    from user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from shop
+    delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.mybatis.model.ShopExample">
-    delete from shop
+  <delete id="deleteByExample" parameterType="com.example.mybatis.model.UserExample">
+    delete from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.mybatis.model.Shop">
-    insert into shop (id, open_id, shop_id
+  <insert id="insert" parameterType="com.example.mybatis.model.User">
+    insert into user (id, username, password
       )
-    values (#{id,jdbcType=INTEGER}, #{openId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.example.mybatis.model.Shop">
-    insert into shop
+  <insert id="insertSelective" parameterType="com.example.mybatis.model.User">
+    insert into user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="openId != null">
-        open_id,
+      <if test="username != null">
+        username,
       </if>
-      <if test="shopId != null">
-        shop_id,
+      <if test="password != null">
+        password,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="openId != null">
-        #{openId,jdbcType=INTEGER},
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
       </if>
-      <if test="shopId != null">
-        #{shopId,jdbcType=INTEGER},
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.mybatis.model.ShopExample" resultType="java.lang.Long">
-    select count(*) from shop
+  <select id="countByExample" parameterType="com.example.mybatis.model.UserExample" resultType="java.lang.Long">
+    select count(*) from user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update shop
+    update user
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.openId != null">
-        open_id = #{record.openId,jdbcType=INTEGER},
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
       </if>
-      <if test="record.shopId != null">
-        shop_id = #{record.shopId,jdbcType=INTEGER},
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -152,34 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update shop
+    update user
     set id = #{record.id,jdbcType=INTEGER},
-      open_id = #{record.openId,jdbcType=INTEGER},
-      shop_id = #{record.shopId,jdbcType=INTEGER}
+      username = #{record.username,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatis.model.Shop">
-    update shop
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.mybatis.model.User">
+    update user
     <set>
-      <if test="openId != null">
-        open_id = #{openId,jdbcType=INTEGER},
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
       </if>
-      <if test="shopId != null">
-        shop_id = #{shopId,jdbcType=INTEGER},
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.mybatis.model.Shop">
-    update shop
-    set open_id = #{openId,jdbcType=INTEGER},
-      shop_id = #{shopId,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.example.mybatis.model.User">
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
-  <select id="getShopList" resultType="com.example.mybatis.model.Shop">
-    select id, shop_id,open_id from shop
-  </select>
 </mapper>
