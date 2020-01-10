@@ -23,12 +23,12 @@ public class AppRunner implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        log.info(".... Fetching books");
-        log.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
-        log.info("isbn-4567 -->" + bookRepository.getByIsbn("isbn-4567"));
-        log.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
-        log.info("isbn-4567 -->" + bookRepository.getByIsbn("isbn-4567"));
-        log.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
-        log.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
+//        log.info(".... Fetching books");
+//        log.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
+//        log.info("isbn-4567 -->" + bookRepository.getByIsbn("isbn-4567"));
+//        log.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
+//        log.info("isbn-4567 -->" + bookRepository.getByIsbn("isbn-4567"));
+//        log.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
+//        log.info("isbn-1234 -->" + bookRepository.getByIsbn("isbn-1234"));
     }
 }

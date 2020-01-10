@@ -1,4 +1,5 @@
 package com.example.seed.controller;
+import com.example.seed.model.dto.UserInfoDto;
 import com.example.seed.support.utils.Result;
 import com.example.seed.model.entity.UserInfo;
 import com.example.seed.service.UserInfoService;
@@ -46,7 +47,7 @@ public class UserInfoController {
 
     @ApiOperation(value = "获取信息（list不分页）")
     @GetMapping("/list")
-    public Result<List<UserInfo>> list() {
+    public Result<List<UserInfo>> list(UserInfoDto dto) {
         List<UserInfo> list = new ArrayList<>();
         try{
             list = userInfoService.findAll();

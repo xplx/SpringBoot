@@ -1,0 +1,9 @@
+server.port: 9002
+spring.application.name: boot-cache
+
+
+spring.redis.host: localhost
+spring.redis.port: 6379
+spring.redis.database: 1
+spring.redis.password: 123456
+

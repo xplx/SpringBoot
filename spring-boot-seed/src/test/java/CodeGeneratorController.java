@@ -17,7 +17,7 @@ import static com.example.seed.support.core.ProjectConstant.*;
  * 代码生成器，根据数据表名称生成对应的Model、Mapper、Service、Controller简化开发。
  * ！！！！！！！！！！注意注意注意注意，使用该方式会覆盖Service和Controller代码，所以在添加完自己代码后，请勿使用方法。
  */
-public class CodeGeneratorAll {
+public class CodeGeneratorController {
     //JDBC配置，请修改为你项目的实际配置
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/test";
     private static final String JDBC_USERNAME = "root";
