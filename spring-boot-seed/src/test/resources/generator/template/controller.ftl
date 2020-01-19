@@ -49,7 +49,7 @@ public class ${modelNameUpperCamel}Controller {
     public Result<List<${modelNameUpperCamel}>> list() {
         List<${modelNameUpperCamel}> list = new ArrayList<>();
         try{
-            list = ${modelNameLowerCamel}Service.findAll();
+            list = ${modelNameLowerCamel}Service.findListAll();
         }catch (Exception e) {
             log.error("${modelNameUpperCamel}Controller 获取信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("${modelNameUpperCamel}Controller 获取信息异常!");
@@ -67,7 +67,7 @@ public class ${modelNameUpperCamel}Controller {
         List<${modelNameUpperCamel}> list = new ArrayList<>();
         try{
             PageHelper.startPage(pageNum, pageSize);
-            list = ${modelNameLowerCamel}Service.findAll();
+            list = ${modelNameLowerCamel}Service.findListAll();
         }catch (Exception e) {
             log.error("${modelNameUpperCamel}Controller 获取信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("${modelNameUpperCamel}Controller 获取信息异常!");

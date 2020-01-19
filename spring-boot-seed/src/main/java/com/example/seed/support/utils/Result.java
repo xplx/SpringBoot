@@ -132,4 +132,14 @@ public class Result<T> implements Serializable {
             return new Result(this);
         }
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "code=" + code +
+                ", msg='" + msg + '\'' +
+                ", description='" + description + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

@@ -1,11 +1,20 @@
 package com.example.seed.controller;
 
-import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
+
+import com.alibaba.fastjson.JSONObject;
+import com.example.seed.support.utils.BeanUtil;
+import com.example.seed.support.utils.EmptyUtil;
+import com.example.seed.support.utils.RedisUtil;
 import com.google.common.base.Optional;
 import com.google.common.base.Strings;
+import io.swagger.models.Model;
+import io.swagger.models.Operation;
+import io.swagger.models.Path;
 import io.swagger.models.Swagger;
+import io.swagger.models.parameters.Parameter;
+import io.swagger.models.parameters.QueryParameter;
+import io.swagger.models.properties.Property;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +38,8 @@ import springfox.documentation.swagger2.mappers.ServiceModelToSwagger2Mapper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
@@ -53,6 +64,9 @@ public class Swagger2Controller {
     private final JsonSerializer jsonSerializer;
 
     @Autowired
+    private RedisUtil redisUtil;
+
+    @Autowired
     public Swagger2Controller(
             Environment environment,
             DocumentationCache documentationCache,
@@ -71,7 +85,7 @@ public class Swagger2Controller {
     @RequestMapping(
             value = DEFAULT_URL,
             method = RequestMethod.GET,
-            produces = { APPLICATION_JSON_VALUE, HAL_MEDIA_TYPE })
+            produces = {APPLICATION_JSON_VALUE, HAL_MEDIA_TYPE})
     @PropertySourcedMapping(
             value = "${springfox.documentation.swagger.v2.path}",
             propertyKey = "springfox.documentation.swagger.v2.path")
@@ -92,69 +106,59 @@ public class Swagger2Controller {
         if (isNullOrEmpty(swagger.getHost())) {
             swagger.host(hostName(uriComponents));
         }
-        ResponseEntity<Json> responseEntity = new ResponseEntity<Json>(jsonSerializer.toJson(swagger), HttpStatus.OK);
-        String bodyJson = responseEntity.getBody().value();
-        JSONObject jsonObject = JSONUtil.parseObj(bodyJson);
-        Set<String> it = jsonObject.keySet();
-        for (String key : it) {
-            String value = jsonObject.getStr(key);
-//            System.out.println("key：" + key);
-//            System.out.println("value: " + value);
+        //获取swagger路径返回参数
+        Map<String, Model> returnModelMap = swagger.getDefinitions();
+        Iterator<Map.Entry<String, Model>> returnModelSet = returnModelMap.entrySet().iterator();
+        while (returnModelSet.hasNext()) {
+            String redisParam = redisUtil.get("param/") + "";
+            //获取路径参数
+            Map.Entry<String, Model> modeMap = returnModelSet.next();
+            String returnType = modeMap.getKey().substring(0, 3);
+            System.out.println(returnType);
+            if (!"返回类".equals(returnType)) {
+                Model modelValue = modeMap.getValue();
 
-
-            if ("paths".equals(key)) {
-                JSONObject jsonPaths = JSONUtil.parseObj(value);
-                Set<String> setPaths = jsonPaths.keySet();
-                for (String keyPaths : setPaths) {
-                    String valuePaths = jsonPaths.getStr(keyPaths);
-//                    System.out.println("keyPaths：" + keyPaths);
-//                    System.out.println("valuePaths: " + valuePaths);
-
-
-                    JSONObject jsonDetail = JSONUtil.parseObj(valuePaths);
-                    Set<String> setDetail = jsonDetail.keySet();
-                    for (String keyDetail : setDetail) {
-                        String valueDetail= jsonDetail.getStr(keyDetail);
-//                        System.out.println("keyDetail：" + keyDetail);
-//                        System.out.println("valueDetail: " + valueDetail);
-
-                        JSONObject jsonParam = JSONUtil.parseObj(valueDetail);
-                        Set<String> setParam = jsonParam.keySet();
-                        for (String keyParam : setParam) {
-
-                            if ("operationId".equals(keyParam)) {
-                                String operationId = jsonParam.getStr(keyParam);
-                                System.out.println(operationId);
-                            }
-                            if ("responses".equals(keyParam)) {
-                                String responses = jsonParam.getStr(keyParam);
-                                System.out.println("responses:" +responses);
-
-                                JSONObject jsonResponses = JSONUtil.parseObj(responses);
-                                Set<String> setResponses = jsonResponses.keySet();
-                                for (String keyResponses : setResponses) {
-
-                                }
-                            }
-                            if ("parameters".equals(keyParam)) {
-                                String parameters = jsonParam.getStr(keyParam);
-                                System.out.println("parameters:" + parameters);
-
-                                JSONArray jsonParameters = JSONUtil.parseArray(parameters);
-                                Iterator<Object> itO = jsonParameters.iterator();
-                                for (Object o : jsonParameters) {
-                                    System.out.println(o);
-                                }
-
-                            }
-
-                        }
-
-                    }
+                Map<String, Property> mapProperties = modelValue.getProperties();
+                Iterator<Map.Entry<String, Property>> iteratorProperties = mapProperties.entrySet().iterator();
+                while (iteratorProperties.hasNext()) {
+                    Map.Entry<String, Property> propertyMap = iteratorProperties.next();
+                    Property property = propertyMap.getValue();
+                    property.setExample("1000");
                 }
             }
         }
 
+
+        //获取swagger路径参数
+        Map<String, Path> pathsMap = swagger.getPaths();
+        Iterator<Map.Entry<String, Path>> pathsIterator = pathsMap.entrySet().iterator();
+        while (pathsIterator.hasNext()) {
+
+            //获取路径参数
+            Map.Entry<String, Path> pathMap = pathsIterator.next();
+            Path path = pathMap.getValue();
+            String pathUrl = pathMap.getKey();
+            String redisParam = redisUtil.get("param/" + pathUrl) + "";
+
+            //获取入参示例
+            JSONObject redisParamJson = JSONObject.parseObject(redisParam);
+            Operation pathOperation = path.getGet();
+            /***********查询参数初始化***************/
+            if (EmptyUtil.isNotEmpty(pathOperation) && EmptyUtil.isNotEmpty(redisParamJson)) {
+                List<Parameter> parameterList = pathOperation.getParameters();
+                List<QueryParameter> parameterVOList = BeanUtil.toModelList(parameterList, QueryParameter.class);
+                parameterList.clear();
+                for (QueryParameter queryParameter : parameterVOList) {
+                    String exampleValue = redisParamJson.getString(queryParameter.getName());
+                    if (StringUtils.isNotBlank(exampleValue)) {
+                        queryParameter.setExample(exampleValue);
+                    }
+                    parameterList.add(queryParameter);
+                }
+            }
+        }
+
+        ResponseEntity<Json> responseEntity = new ResponseEntity<Json>(jsonSerializer.toJson(swagger), HttpStatus.OK);
         return responseEntity;
     }
 

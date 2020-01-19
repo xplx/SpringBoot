@@ -1,20 +1,25 @@
 package com.example.seed.controller;
+
 import com.example.seed.model.dto.UserInfoDto;
-import com.example.seed.support.utils.Result;
 import com.example.seed.model.entity.UserInfo;
 import com.example.seed.service.UserInfoService;
+import com.example.seed.support.utils.Result;
+import com.example.seed.support.utils.enums.StatusCode;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.*;
-import javax.annotation.Resource;
-import java.util.List;
-import lombok.extern.slf4j.Slf4j;
 import io.swagger.annotations.Api;
-import java.util.ArrayList;
-import com.example.seed.support.utils.enums.StatusCode;
-import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
 *
@@ -47,15 +52,30 @@ public class UserInfoController {
 
     @ApiOperation(value = "获取信息（list不分页）")
     @GetMapping("/list")
+    @Cacheable(value = "UserInfo",key = "#dto.id")
     public Result<List<UserInfo>> list(UserInfoDto dto) {
         List<UserInfo> list = new ArrayList<>();
         try{
-            list = userInfoService.findAll();
+            list = userInfoService.findListByObject(dto);
         }catch (Exception e) {
             log.error("UserInfoController 获取信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("UserInfoController 获取信息异常!");
         }
         return Result.ok().setData(list);
+    }
+
+    @ApiOperation(value = "修改信息")
+    @PutMapping("/update")
+    //清楚指定key缓存（没有key值，将用接收参数作为key值）
+    @CacheEvict(value = "UserInfo",key = "#userInfo.id")
+    public Result update(UserInfo userInfo) {
+        try{
+            userInfoService.updateByKeySelectiveTb(userInfo);
+        }catch (Exception e) {
+            log.error("UserInfoController 更新信息异常:{}", e);
+            return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("UserInfoController 更新信息异常!");
+        }
+        return Result.ok();
     }
 
     @ApiOperation(value = "获取信息（list分页）")
@@ -68,7 +88,7 @@ public class UserInfoController {
         List<UserInfo> list = new ArrayList<>();
         try{
             PageHelper.startPage(pageNum, pageSize);
-            list = userInfoService.findAll();
+            list = userInfoService.findListAll();
         }catch (Exception e) {
             log.error("UserInfoController 获取信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("UserInfoController 获取信息异常!");
@@ -81,7 +101,7 @@ public class UserInfoController {
     @PostMapping("/add")
     public Result add(UserInfo userInfo) {
         try{
-            userInfoService.save(userInfo);
+            userInfoService.saveSelectiveId(userInfo);
         }catch (Exception e) {
             log.error("UserInfoController 保存信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("UserInfoController 保存信息异常!");
@@ -89,17 +109,6 @@ public class UserInfoController {
         return Result.ok();
     }
 
-    @ApiOperation(value = "修改信息")
-    @PutMapping("/update")
-    public Result update(UserInfo userInfo) {
-        try{
-            userInfoService.update(userInfo);
-        }catch (Exception e) {
-            log.error("UserInfoController 更新信息异常:{}", e);
-            return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("UserInfoController 更新信息异常!");
-        }
-        return Result.ok();
-    }
 
     @ApiOperation(value = "删除信息（主键）")
     @DeleteMapping("/delete")

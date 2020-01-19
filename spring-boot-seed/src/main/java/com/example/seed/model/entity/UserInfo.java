@@ -2,8 +2,12 @@ package com.example.seed.model.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javax.persistence.*;
 import lombok.ToString;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @ToString
 @ApiModel("")
@@ -20,7 +24,7 @@ public class UserInfo {
     /**
      * 名字
      */
-    @ApiModelProperty("名字")
+    @ApiModelProperty(value = "名字", example = "徐小鹏")
     private String name;
 
     /**

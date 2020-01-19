@@ -39,9 +39,14 @@ public class MyFilter implements Filter {
 //            authorization = paramGetMap.get("Authorization");
 //        }
         //////////////////////////////////////////////////////////////////////
-        filterChain.doFilter(myServletRequest, servletResponse);
-        //////////////////////////////////////////////////////////////////////
 
+        //////////////////////////////////////////////////////////////////////
+        String url = hrequest.getRequestURI();
+        if ("/v2/api-docs".equals(url)) {
+            hrequest.getRequestDispatcher("/v2/api-docs/wxp").forward(hrequest, httpServletResponse);
+        }else {
+            filterChain.doFilter(myServletRequest, servletResponse);
+        }
     }
     @Override
     public void destroy() {

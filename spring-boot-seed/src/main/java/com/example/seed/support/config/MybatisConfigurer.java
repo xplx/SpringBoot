@@ -9,8 +9,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import tk.mybatis.spring.mapper.MapperScannerConfigurer;
+
 import javax.sql.DataSource;
 import java.util.Properties;
+
 import static com.example.seed.support.core.ProjectConstant.*;
 
 /**

@@ -24,7 +24,7 @@ public class UserInfoDto {
     /**
      * 名字
      */
-    @ApiModelProperty("名字")
+    @ApiModelProperty(value = "名字", example = "5000")
     private String name;
 
     /**
