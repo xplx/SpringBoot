@@ -3,6 +3,7 @@ package com.example.seed.controller;
 import com.example.seed.model.dto.UserInfoDto;
 import com.example.seed.model.entity.UserInfo;
 import com.example.seed.service.UserInfoService;
+import com.example.seed.support.param.CriteriaRewrite;
 import com.example.seed.support.utils.Result;
 import com.example.seed.support.utils.enums.StatusCode;
 import com.github.pagehelper.PageHelper;
@@ -13,9 +14,9 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
+import tk.mybatis.mapper.entity.Condition;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -34,20 +35,19 @@ public class UserInfoController {
     @Resource
     private UserInfoService userInfoService;
 
-    @ApiOperation(value = "获取信息（通过主键）")
-    @GetMapping("/detail")
-    @ApiImplicitParams({
-        @ApiImplicitParam(paramType = "query", dataType = "Integer", name = "id", value = "id")
-    })
-    public Result<UserInfo> detail(@RequestParam Integer id) {
-        UserInfo userInfo = new UserInfo();
+    @ApiOperation(value = "获取信息list")
+    @GetMapping("/infoList")
+    public Result<UserInfo> detail(UserInfoDto userInfo) {
+        List<UserInfo> userInfoList = new ArrayList<>();
         try{
-            userInfo = userInfoService.findById(id);
+            Condition condition = CriteriaRewrite.equalToCondition( new Condition(UserInfo.class), userInfo);
+            condition.orderBy("id").desc();
+            userInfoList = userInfoService.findListByCondition(condition,UserInfo.class);
         }catch (Exception e) {
             log.error("UserInfoController 获取信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("UserInfoController 获取信息异常!");
         }
-        return Result.ok().setData(userInfo);
+        return Result.ok().setData(userInfoList);
     }
 
     @ApiOperation(value = "获取信息（list不分页）")
