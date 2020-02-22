@@ -1,4 +1,4 @@
-package com.example.seed.support.interceptor;
+package com.example.seed.support.log;
 
 import com.alibaba.fastjson.JSON;
 import com.example.seed.support.utils.EmptyUtil;
@@ -47,7 +47,6 @@ public class LogParamInterceptor {
         //IP地址
         String pathUrl = request.getServletPath();
         String ipAddr = getRemoteHost(request);
-
         String url = request.getRequestURL().toString();
         String reqParam = preHandle(joinPoint, request);
         String swaggerParam = swaggerDescription(joinPoint, request);
