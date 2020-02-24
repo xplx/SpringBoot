@@ -17,6 +17,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import wiki.xsx.core.log.Log;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class UserInfoController {
     @Resource
     private UserInfoService userInfoService;
 
+    @Log("获取信息list123")
     @ApiOperation(value = "获取信息list")
     @GetMapping("/infoList")
     public Result<UserInfo> detail(UserInfoDto userInfo) {
