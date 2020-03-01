@@ -1,8 +1,11 @@
 package com.example.seed.support.core;
 
+import com.example.seed.support.param.DeleteBySelectMapper;
+import com.example.seed.support.param.InsertOrUpdateMapper;
 import tk.mybatis.mapper.common.BaseMapper;
 import tk.mybatis.mapper.common.ConditionMapper;
 import tk.mybatis.mapper.common.IdsMapper;
+import tk.mybatis.mapper.common.ids.DeleteByIdsMapper;
 import tk.mybatis.mapper.common.special.InsertListMapper;
 
 /**
@@ -13,5 +16,7 @@ public interface Mapper<T>
         BaseMapper<T>,
         ConditionMapper<T>,
         IdsMapper<T>,
-        InsertListMapper<T> {
+        InsertListMapper<T>,
+        InsertOrUpdateMapper<T>,
+        DeleteBySelectMapper<T> {
 }

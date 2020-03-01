@@ -199,6 +199,24 @@ public interface Service<T> {
     void saveSelectiveObject(Object obj);
 
     /**
+     * 保存或更新
+     * @param obj
+     */
+    void saveOrUpdateKeySelective(Object obj);
+
+    /**
+     * 批量保存或更新
+     * @param models
+     */
+    void saveOrUpdateKeySelectiveList(List<T> models);
+
+    /**
+     * 批量保存或更新
+     * @param models
+     */
+    void saveOrUpdateKeySelectiveList(List<Object> models, Class<T> t);
+
+    /**
      * 批量保存（表对象类）
      * @param models
      */
@@ -272,4 +290,10 @@ public interface Service<T> {
      * @param ids
      */
     void deleteByIds(String ids);
+
+    /**
+     *
+     * @param condition
+     */
+    void deleteBySelectCondition(Condition condition);
 }
