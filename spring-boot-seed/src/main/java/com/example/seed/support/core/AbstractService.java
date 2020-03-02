@@ -147,14 +147,14 @@ public abstract class AbstractService<T> implements Service<T> {
     }
 
     @Override
-    public List<T> findListByOnly(String fieldName , Object value){
+    public List<T> findListByOnly(String fieldName, Object value) {
         Map<String, Object> map = new HashMap<>();
         map.put(fieldName, value);
         return mapper.selectByCondition(getConditionMap(map));
     }
 
     @Override
-    public <M> ArrayList<M> findListByOnly(String fieldName , Object value, Class<M> m){
+    public <M> ArrayList<M> findListByOnly(String fieldName, Object value, Class<M> m) {
         Map<String, Object> map = new HashMap<>();
         map.put(fieldName, value);
         return BeanUtil.toModelList(mapper.selectByCondition(getConditionMap(map)), m);
@@ -206,6 +206,21 @@ public abstract class AbstractService<T> implements Service<T> {
     @Override
     public void saveSelectiveObject(Object obj) {
         mapper.insertSelective(getObjectTb(obj));
+    }
+
+    @Override
+    public void saveOrUpdateKeySelective(Object obj) {
+        mapper.insertOrUpdateKeySelective(getObjectTb(obj));
+    }
+
+    @Override
+    public void saveOrUpdateKeySelectiveList(List<T> models) {
+        mapper.insertOrUpdateSelectiveList(models);
+    }
+
+    @Override
+    public void saveOrUpdateKeySelectiveList(List<Object> models, Class<T> t) {
+        mapper.insertOrUpdateSelectiveList(BeanUtil.toModelList(models, t));
     }
 
     @Override
@@ -268,6 +283,11 @@ public abstract class AbstractService<T> implements Service<T> {
     @Override
     public void deleteByIds(String ids) {
         mapper.deleteByIds(ids);
+    }
+
+    @Override
+    public void deleteBySelectCondition(Condition condition) {
+        mapper.deleteBySelectCondition(condition);
     }
 
     private T getObjectTb(Object obj) {
