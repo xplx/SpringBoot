@@ -20,11 +20,6 @@ public class CriteriaRewrite {
      */
     public static Condition equalToCondition(Condition condition, Object param) {
         Condition.Criteria criteria = condition.createCriteria();
-        criteria = getAnnotationCustom(criteria, param);
-        return condition;
-    }
-
-    private static Example.Criteria getAnnotationCustom(Condition.Criteria criteria, Object param) {
         Map<String, Object> map = BeanUtil.beanToMap(param);
         // 得到类对象
         Class userCla = (Class) param.getClass();
@@ -36,7 +31,7 @@ public class CriteriaRewrite {
             f.setAccessible(true);
             //获取成员变量上的注解
             MapperParamCondition mapperParam = f.getAnnotation(MapperParamCondition.class);
-            if (mapperParam != null && EmptyUtil.isNotEmpty(map.get(f.getName()))) {
+            if (mapperParam != null && (EmptyUtil.isNotEmpty(map.get(f.getName())) || "order".equals(mapperParam.order()))) {
                 if (StringUtil.isEmpty(mapperParam.entityName())) {
                     property = f.getName();
                 } else {
@@ -51,10 +46,28 @@ public class CriteriaRewrite {
                 } else {
                     throw new RuntimeException("查询连接符号【" + mapperParam.patternType() + "】不存在！");
                 }
+
+                //排序
+                if ("order".equals(mapperParam.order())) {
+                    if ("desc".equals(mapperParam.orderType())) {
+                        condition.orderBy(property).desc();
+                    }else if("asc".equals(mapperParam.orderType())) {
+                        condition.orderBy(property).asc();
+                    }else {
+                        throw new RuntimeException("排序类型【" + mapperParam.orderType() + "】不存在！");
+                    }
+                }else if(EmptyUtil.isNotEmpty(mapperParam.order())) {
+                    throw new RuntimeException("排序符号【" + mapperParam.order() + "】不存在！");
+                }
                 map.remove(f.getName());
             }
         }
         criteria.andEqualTo(map);
+        return condition;
+    }
+
+    private static Example.Criteria getAnnotationCustom(Condition.Criteria criteria, Object param) {
+
         return criteria;
     }
 
@@ -143,6 +156,19 @@ public class CriteriaRewrite {
     }
 
     private static Object getFuzzyPosition(Object value, String fuzzyPosition) {
+        if ("before".equals(fuzzyPosition)) {
+            value = "%" + value;
+        } else if ("after".equals(fuzzyPosition)) {
+            value = value + "%";
+        } else if ("all".equals(fuzzyPosition)) {
+            value = "%" + value + "%";
+        } else {
+            throw new RuntimeException("模糊查询符号【" + fuzzyPosition + "】不存在！");
+        }
+        return value;
+    }
+
+    private static Object getOrderType(Object value, String fuzzyPosition) {
         if ("before".equals(fuzzyPosition)) {
             value = "%" + value;
         } else if ("after".equals(fuzzyPosition)) {

@@ -1,12 +1,15 @@
 package com.example.seed.support.exception;
 
 import com.example.seed.support.utils.Result;
+import com.example.seed.support.utils.SpringContextUtil;
+import com.example.seed.support.utils.enums.StatusCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author wuxiaopeng
@@ -16,45 +19,29 @@ import javax.servlet.http.HttpServletRequest;
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-    /**
-     * 处理自定义的业务异常
-     *
-     * @param req
-     * @param e
-     * @return
-     */
-    @ExceptionHandler(value = RuntimeException.class)
-    public Result bizExceptionHandler(HttpServletRequest req, RuntimeException e) {
-        log.error("发生业务异常！原因是：{}", e.getMessage());
-        return Result.failure().setMsg(e.getMessage());
-    }
 
-    /**
-     * 处理空指针的异常
-     *
-     * @param req
-     * @param e
-     * @return
-     */
-    @ExceptionHandler(value = NullPointerException.class)
     @ResponseBody
-    public Result exceptionHandler(HttpServletRequest req, NullPointerException e) {
-        log.error("发生空指针异常！原因是:", e);
-        return Result.failure();
-    }
-
-
-    /**
-     * 处理其他异常
-     *
-     * @param req
-     * @param e
-     * @return
-     */
-    @ExceptionHandler(value = Exception.class)
-    @ResponseBody
-    public Result exceptionHandler(HttpServletRequest req, Exception e) {
-        log.error("未知异常！原因是:", e);
-        return Result.error();
+    @ExceptionHandler(Exception.class)
+    public Result handleException(Exception e, HttpServletRequest req, HttpServletResponse response) {
+        String uri = req.getRequestURI();
+        if (e instanceof CustomException) {
+            CustomException ce = (CustomException) e;
+            log.error("uri:【{}】 message:【{}】", uri, ce.getMessage(), ce);
+            return Result.failure().setCode(ce.getStatusCode()).setMsg(ce.getMessage());
+        } else {
+            log.error("uri:【{}】 message:【{}】", uri, e.getMessage(), e);
+            StackTraceElement[] getStackTrace = e.getStackTrace();
+            String profile = SpringContextUtil.getActiveProfile();
+            if ("dev".equals(profile) || "test".equals(profile)) {
+                return Result.failure().setCode(StatusCode.FAILURE.getCode()).
+                        setMsg("服务接口异常:【{"
+                                + "uri:" + uri +"     "
+                                + e.getClass().getSimpleName() + ":"
+                                + e.getMessage() + "       "
+                                + "错误代码行数：" + getStackTrace[0]
+                                + " }】");
+            }
+            return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("服务繁忙，请稍后重试，或联系管理员！");
+        }
     }
 }

@@ -12,7 +12,7 @@ public class UserInfoDto {
      * 主键id
      */
     @ApiModelProperty("主键id")
-    @MapperParamCondition(pattern = "in",entityName = "id")
+    @MapperParamCondition(pattern = "in",entityName = "id",order = "order", orderType = "desc")
     private Long[] ids;
 
     /**

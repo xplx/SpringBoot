@@ -17,8 +17,6 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
-import wiki.xsx.core.log.Log;
-
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,19 +34,12 @@ public class UserInfoController {
     @Resource
     private UserInfoService userInfoService;
 
-    @Log("获取信息list123")
     @ApiOperation(value = "获取信息list")
     @GetMapping("/infoList")
     public Result<UserInfo> detail(UserInfoDto userInfo) {
         List<UserInfo> userInfoList = new ArrayList<>();
-        try{
-            Condition condition = CriteriaRewrite.equalToCondition( new Condition(UserInfo.class), userInfo);
-            condition.orderBy("id").desc();
-            userInfoList = userInfoService.findListByCondition(condition,UserInfo.class);
-        }catch (Exception e) {
-            log.error("UserInfoController 获取信息异常:{}", e);
-            return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("UserInfoController 获取信息异常!");
-        }
+        Condition condition = CriteriaRewrite.equalToCondition( new Condition(UserInfo.class), userInfo);
+        userInfoList = userInfoService.findListByCondition(condition,UserInfo.class);
         return Result.ok().setData(userInfoList);
     }
 
