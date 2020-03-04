@@ -3,7 +3,7 @@ package com.example.seed.controller;
 import com.example.seed.model.dto.UserInfoDto;
 import com.example.seed.model.entity.UserInfo;
 import com.example.seed.service.UserInfoService;
-import com.example.seed.support.param.CriteriaRewrite;
+import com.example.seed.support.param.ConditionRewrite;
 import com.example.seed.support.utils.Result;
 import com.example.seed.support.utils.enums.StatusCode;
 import com.github.pagehelper.PageHelper;
@@ -17,8 +17,6 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
-import wiki.xsx.core.log.Log;
-
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,7 +40,7 @@ public class UserInfoController {
         List<UserInfo> userInfoList = new ArrayList<>();
         try {
             //通过注解获取相应的条件信息
-            Condition condition = CriteriaRewrite.equalToCondition(new Condition(UserInfo.class), userInfo);
+            Condition condition = ConditionRewrite.equalToCondition(new Condition(UserInfo.class), userInfo);
             condition.orderBy("id").desc();
             userInfoList = userInfoService.findListByCondition(condition, UserInfo.class);
         } catch (Exception e) {
@@ -137,7 +135,7 @@ public class UserInfoController {
     @PostMapping("/saveOrUpdateList")
     public Result saveOrUpdateList(@RequestBody List<UserInfo> list) {
         try {
-            userInfoService.saveOrUpdateKeySelectiveList(list);
+            userInfoService.saveOrUpdateKeyList(list);
         } catch (Exception e) {
             log.error("UserInfoController 保存信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("UserInfoController 保存信息异常!");

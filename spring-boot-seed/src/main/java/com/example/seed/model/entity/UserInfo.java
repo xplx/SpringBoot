@@ -2,12 +2,11 @@ package com.example.seed.model.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.ToString;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import lombok.ToString;
 
 @ToString
 @ApiModel("")
@@ -16,28 +15,35 @@ public class UserInfo {
     /**
      * 主键id
      */
+    @ApiModelProperty(value = "主键id")
+    @NotNull(message="主键id不能为空")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty("主键id")
     private Long id;
 
     /**
      * 名字
      */
-    @ApiModelProperty(value = "名字", example = "徐小鹏")
+    @ApiModelProperty(value = "名字")
+    @NotEmpty(message="名字不能为空")
     private String name;
 
     /**
      * 年龄
      */
-    @ApiModelProperty("年龄")
+    @ApiModelProperty(value = "年龄")
     private Integer age;
 
     /**
      * 密码
      */
-    @ApiModelProperty("密码")
+    @ApiModelProperty(value = "密码")
     private String password;
+
+    /**
+     * 排序
+     */
+    @ApiModelProperty(value = "排序")
+    private String order;
 
     /**
      * 获取主键id
@@ -109,5 +115,23 @@ public class UserInfo {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * 获取排序
+     *
+     * @return order - 排序
+     */
+    public String getOrder() {
+        return order;
+    }
+
+    /**
+     * 设置排序
+     *
+     * @param order 排序
+     */
+    public void setOrder(String order) {
+        this.order = order;
     }
 }

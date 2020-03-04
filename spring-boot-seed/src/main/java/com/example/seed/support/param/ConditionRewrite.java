@@ -10,7 +10,11 @@ import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Map;
 
-public class CriteriaRewrite {
+/**
+ * @author wuxiaopeng
+ * @date  22020-03-02
+ */
+public class ConditionRewrite {
     /**
      * 解析mp注解条件
      *
@@ -30,7 +34,7 @@ public class CriteriaRewrite {
             Field f = fs[i];
             f.setAccessible(true);
             //获取成员变量上的注解
-            MapperParamCondition mapperParam = f.getAnnotation(MapperParamCondition.class);
+            ParamCondition mapperParam = f.getAnnotation(ParamCondition.class);
             if (mapperParam != null && (EmptyUtil.isNotEmpty(map.get(f.getName())) || "order".equals(mapperParam.order()))) {
                 if (StringUtil.isEmpty(mapperParam.entityName())) {
                     property = f.getName();

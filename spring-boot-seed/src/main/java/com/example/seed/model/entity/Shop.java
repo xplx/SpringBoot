@@ -2,6 +2,7 @@ package com.example.seed.model.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.Column;
@@ -9,8 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@ToString
-@ApiModel("")
+@Data
 public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,32 +20,4 @@ public class Shop {
     @Column(name = "shop_id")
     @ApiModelProperty("")
     private Integer shopId;
-
-    /**
-     * @return id
-     */
-    public Integer getId() {
-        return id;
-    }
-
-    /**
-     * @param id
-     */
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    /**
-     * @return shop_id
-     */
-    public Integer getShopId() {
-        return shopId;
-    }
-
-    /**
-     * @param shopId
-     */
-    public void setShopId(Integer shopId) {
-        this.shopId = shopId;
-    }
 }

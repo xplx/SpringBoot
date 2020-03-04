@@ -9,8 +9,6 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="age" jdbcType="INTEGER" property="age" />
     <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="order" jdbcType="VARCHAR" property="order" />
   </resultMap>
-  <select id="getList" resultType="com.example.seed.model.entity.UserInfo">
-    SELECT * FROM `user_info`
-  </select>
 </mapper>

@@ -1,6 +1,6 @@
 package com.example.seed.model.dto;
 
-import com.example.seed.support.param.MapperParamCondition;
+import com.example.seed.support.param.ParamCondition;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -12,21 +12,21 @@ public class UserInfoDto {
      * 主键id
      */
     @ApiModelProperty("主键id")
-    @MapperParamCondition(pattern = "in",entityName = "id")
+    @ParamCondition(pattern = "in",entityName = "id")
     private Long id;
 
     /**
      * 主键id
      */
     @ApiModelProperty("主键ids")
-    @MapperParamCondition(pattern = "in",entityName = "id")
+    @ParamCondition(pattern = "in",entityName = "id")
     private Long[] ids;
 
     /**
      * 名字
      */
     @ApiModelProperty(value = "名字", example = "5000")
-    @MapperParamCondition(pattern = "like",fuzzyPosition = "all")
+    @ParamCondition(pattern = "like",fuzzyPosition = "all")
     @Transient
     private String name;
 
@@ -34,13 +34,13 @@ public class UserInfoDto {
      * 年龄
      */
     @ApiModelProperty("年龄")
-    @MapperParamCondition(pattern = ">=")
+    @ParamCondition(pattern = ">=")
     private Integer age;
 
     /**
      * 密码
      */
     @ApiModelProperty("密码")
-    @MapperParamCondition(pattern = "=")
+    @ParamCondition(pattern = "=")
     private String password;
 }

@@ -1,4 +1,5 @@
-import com.example.seed.support.core.ProjectConstant;
+package com.example.seed.support.core;
+
 import com.google.common.base.CaseFormat;
 import freemarker.template.TemplateExceptionHandler;
 import org.apache.commons.lang3.StringUtils;
@@ -12,12 +13,12 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import static com.example.seed.support.core.ProjectConstant.*;
 
-
 /**
- * 代码生成器，根据数据表名称生成对应的Model、Mapper、Service、Controller简化开发。
- * ！！！！！！！！！！注意注意注意注意，使用该方式会覆盖Service和Controller代码，所以在添加完自己代码后，请勿使用方法。
+ * @author wuxiaopeng
+ * @description: 构建模板代码工具类
+ * @date 2020/3/4 15:29
  */
-public class CodeGeneratorController {
+public class TkGeneratorUtil {
     //JDBC配置，请修改为你项目的实际配置
     private static final String JDBC_URL = ProjectConstant.JDBC_URL;
     private static final String JDBC_USERNAME = ProjectConstant.JDBC_USERNAME;
@@ -42,7 +43,7 @@ public class CodeGeneratorController {
 
     public static void main(String[] args) {
         //
-         genMoreTable("user_info");
+        genMoreTable("user_info");
         //genCodeByCustomModelName("tb_user_info", "UserInfo");
         //genCodeByCustomModelName("输入表名","输入自定义Model名称");
     }
@@ -136,7 +137,9 @@ public class CodeGeneratorController {
 
         TableConfiguration tableConfiguration = new TableConfiguration(context);
         tableConfiguration.setTableName(tableName);
-        if (StringUtils.isNotEmpty(modelName))tableConfiguration.setDomainObjectName(modelName);
+        if (StringUtils.isNotEmpty(modelName)){
+            tableConfiguration.setDomainObjectName(modelName);
+        }
         tableConfiguration.setGeneratedKey(new GeneratedKey("id", "Mysql", true, null));
         context.addTableConfiguration(tableConfiguration);
 
@@ -161,7 +164,9 @@ public class CodeGeneratorController {
                 throw new RuntimeException("生成Mapper失败：" + warnings);
             }
         }
-        if (StringUtils.isEmpty(modelName)) modelName = tableNameConvertUpperCamel(tableName);
+        if (StringUtils.isEmpty(modelName)) {
+            modelName = tableNameConvertUpperCamel(tableName);
+        }
         System.out.println(modelName + ".java 生成成功");
     }
 
@@ -267,5 +272,4 @@ public class CodeGeneratorController {
     private static String packageConvertPath(String packageName) {
         return String.format("/%s/", packageName.contains(".") ? packageName.replaceAll("\\.", "/") : packageName);
     }
-
 }

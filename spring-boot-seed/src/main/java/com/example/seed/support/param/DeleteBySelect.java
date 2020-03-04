@@ -1,14 +1,16 @@
 package com.example.seed.support.param;
 
 import org.apache.ibatis.mapping.MappedStatement;
-import org.apache.ibatis.mapping.SqlCommandType;
 import tk.mybatis.mapper.MapperException;
 import tk.mybatis.mapper.entity.EntityColumn;
 import tk.mybatis.mapper.mapperhelper.*;
-import tk.mybatis.mapper.util.MetaObjectUtil;
 
 import java.util.Set;
 
+/**
+ * @author wuxiaopeng
+ * @date 2020-03-02
+ */
 public class DeleteBySelect extends MapperTemplate {
     public DeleteBySelect(Class<?> mapperClass, MapperHelper mapperHelper) {
         super(mapperClass, mapperHelper);

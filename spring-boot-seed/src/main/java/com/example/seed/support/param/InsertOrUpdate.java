@@ -8,6 +8,10 @@ import tk.mybatis.mapper.util.StringUtil;
 
 import java.util.Set;
 
+/**
+ * @author wuxiaopeng
+ * @date 2020-03-02
+ */
 public class InsertOrUpdate extends MapperTemplate {
     public InsertOrUpdate(Class<?> mapperClass, MapperHelper mapperHelper) {
         super(mapperClass, mapperHelper);
@@ -108,66 +112,42 @@ public class InsertOrUpdate extends MapperTemplate {
     }
 
     /**
-     * 批量插入
+     * 批量插入或更新
      *
      * @param ms
      */
-    public String insertOrUpdateSelectiveList(MappedStatement ms) {
+    public String insertOrUpdateList(MappedStatement ms) {
         final Class<?> entityClass = getEntityClass(ms);
         //获取全部列
         Set<EntityColumn> columnList = EntityHelper.getColumns(entityClass);
-        //逻辑删除
-        EntityColumn logicDeleteColumn = SqlHelper.getLogicDeleteColumn(entityClass);
+
         //开始拼sql
         StringBuilder sql = new StringBuilder();
         sql.append("<bind name=\"listNotEmptyCheck\" value=\"@tk.mybatis.mapper.util.OGNL@notEmptyCollectionCheck(list, '" + ms.getId() + " 方法参数为空')\"/>");
         sql.append(SqlHelper.insertIntoTable(entityClass, tableName(entityClass), "list[0]"));
         sql.append(SqlHelper.insertColumns(entityClass, false, false, false));
 
-        //使用foreach循环
-//        sql.append("<trim prefix=\"(\" suffix=\")\" suffixOverrides=\",\">");
-//        for (EntityColumn column : columnList) {
-//            if (!column.isInsertable()) {
-//                continue;
-//            }
-//            if (column.isIdentity()) {
-//                sql.append(column.getColumn()).append(",");
-//            } else {
-//                if (logicDeleteColumn != null && logicDeleteColumn == column) {
-//                    sql.append(column.getColumn()).append(",");
-//                    continue;
-//                }
-//                sql.append(SqlHelper.getIfNotNull(column, column.getColumn() + ",", isNotEmpty()));
-//            }
-//        }
-//        sql.append("</trim>");
-
         sql.append(" VALUES ");
         sql.append("<foreach collection=\"list\" item=\"record\" separator=\",\" >");
         sql.append("<trim prefix=\"(\" suffix=\")\" suffixOverrides=\",\">");
         //当某个列有主键策略时，不需要考虑他的属性是否为空，因为如果为空，一定会根据主键策略给他生成一个值
         for (EntityColumn column : columnList) {
-            //sql.append(column.getColumnHolder("record") + ",");
             //其他情况值仍然存在原property中
-            sql.append(this.getIfNotNull(column, column.getColumnHolder("record", null, ","), isNotEmpty()));
+            sql.append(getIfNotNull(column, column.getColumnHolder("record", null, ","), isNotEmpty()));
         }
         sql.append("</trim>");
+        sql.append("</foreach>");
 
         // 反射把MappedStatement中的设置主键名
         EntityHelper.setKeyProperties(EntityHelper.getPKColumns(entityClass), ms);
 
         //update语句
         sql.append(" on duplicate key update ");
-        //sql.append("<foreach collection=\"list\" item=\"record\" separator=\",\" >");
-        //sql.append("<trim prefix=\"(\" suffix=\")\" suffixOverrides=\",\">");
         sql.append("<trim suffixOverrides=\",\">");
         for (EntityColumn column : columnList) {
-            //sql.append(column.getColumnHolder("record") + ",");
-            //其他情况值仍然存在原property中
-            sql.append(this.getIfNotNull(column, this.getColumnHolder(column.getProperty(), "record", ","), false));
+            sql.append(this.getColumnHolder(column.getProperty(), ","));
         }
         sql.append("</trim>");
-        sql.append("</foreach>");
         return sql.toString();
     }
 
@@ -178,18 +158,39 @@ public class InsertOrUpdate extends MapperTemplate {
      * @param separator
      * @return
      */
-    public String getColumnHolder(String entityName, String suffix, String separator) {
+    public String getUpdateColumnHolder(String entityName, String separator) {
         StringBuffer sb = new StringBuffer();
         if (StringUtil.isNotEmpty(entityName)) {
             sb.append(entityName + "=");
         }
-        sb.append("#{");
         if (StringUtil.isNotEmpty(entityName)) {
-            sb.append(suffix);
-            sb.append(".");
-            sb.append(entityName);
+            sb.append("#{");
+            sb.append("record." + entityName);
+            sb.append("} ");
         }
-        sb.append("}");
+        if (StringUtil.isNotEmpty(separator)) {
+            sb.append(separator);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * 返回格式如:#{entityName.age+suffix,jdbcType=NUMERIC,typeHandler=MyTypeHandler}+separator
+     *
+     * @param entityName
+     * @param separator
+     * @return
+     */
+    public String getColumnHolder(String entityName, String separator) {
+        StringBuffer sb = new StringBuffer();
+        if (StringUtil.isNotEmpty(entityName)) {
+            sb.append(entityName + "=");
+        }
+        if (StringUtil.isNotEmpty(entityName)) {
+            sb.append("VALUES (");
+            sb.append(entityName);
+            sb.append(" )");
+        }
         if (StringUtil.isNotEmpty(separator)) {
             sb.append(separator);
         }

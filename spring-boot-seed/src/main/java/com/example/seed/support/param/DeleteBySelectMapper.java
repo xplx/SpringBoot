@@ -1,7 +1,12 @@
 package com.example.seed.support.param;
 
+import com.example.seed.support.param.DeleteBySelect;
 import org.apache.ibatis.annotations.DeleteProvider;
 
+/**
+ * @author wuxiaoepng
+ * @date 2020-03-02
+ */
 @tk.mybatis.mapper.annotation.RegisterMapper
 public interface DeleteBySelectMapper<T> {
     /**

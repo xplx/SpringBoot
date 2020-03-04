@@ -1,6 +1,8 @@
 package com.example.seed.support.core;
 
+import com.example.seed.support.exception.ServiceException;
 import com.example.seed.support.utils.EmptyUtil;
+import com.github.pagehelper.Page;
 import org.springframework.beans.BeanUtils;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,7 @@ import java.util.List;
 public class BeanUtil {
     /**
      * list类转换
+     *
      * @param entities
      * @param modelBeanClass
      * @param <T>
@@ -20,25 +23,61 @@ public class BeanUtil {
      * @return
      * @throws Exception
      */
-    public static <T,M> ArrayList<M> toModelList(List<T> entities, Class<M> modelBeanClass)  {
+    public static <T, M> ArrayList<M> toModelList(List<T> entities, Class<M> modelBeanClass) {
         try {
             ArrayList<M> modelList = new ArrayList<M>();
-            if(!EmptyUtil.isEmpty(entities))
-            {
+            if (!EmptyUtil.isEmpty(entities)) {
                 for (T entity : entities) {
                     M currentModel = modelBeanClass.newInstance();
-                    modelList.add(toModel(entity,currentModel));
+                    modelList.add(toModel(entity, currentModel));
                 }
             }
             return modelList;
-        }catch (IllegalAccessException e) {
-            throw new RuntimeException(e.getMessage(), e);
+        } catch (IllegalAccessException e) {
+            throw new ServiceException(e.getMessage(), e);
         } catch (InstantiationException e) {
-            throw new RuntimeException(e.getMessage(), e);
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
-    public static <M, E> M toModel(E entity, M model){
+    /**
+     * list类转换带分页
+     *
+     * @param entities
+     * @param modelBeanClass
+     * @param <T>
+     * @param <M>
+     * @return
+     * @throws Exception
+     */
+    public static <T, M> Page<M> toModelListPages(List<T> entities, Class<M> modelBeanClass) {
+        try {
+            ArrayList<M> modelList = new ArrayList<M>();
+            Page<M> page = new Page<M>();
+            if (!EmptyUtil.isEmpty(entities)) {
+                for (T entity : entities) {
+                    M currentModel = modelBeanClass.newInstance();
+                    modelList.add(toModel(entity, currentModel));
+                }
+            }
+            if (entities instanceof Page) {
+                page = (Page) entities;
+                page.clear();
+                for (M mode : modelList) {
+                    page.add(mode);
+                }
+            }else {
+                throw new ServiceException("没有分页信息");
+            }
+            return page;
+        } catch (IllegalAccessException e) {
+            throw new ServiceException(e.getMessage(), e);
+        } catch (InstantiationException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    public static <M, E> M toModel(E entity, M model) {
         if (model != null && entity != null) {
             BeanUtils.copyProperties(entity, model);
         } else {
@@ -47,7 +86,7 @@ public class BeanUtil {
         return model;
     }
 
-    public static <M, E> M toModelClass(E entity, Class<M> model){
+    public static <M, E> M toModelClass(E entity, Class<M> model) {
         try {
             M currentModel = model.newInstance();
             if (model != null && entity != null) {
@@ -56,10 +95,10 @@ public class BeanUtil {
                 currentModel = null;
             }
             return currentModel;
-        }catch (IllegalAccessException e) {
-            throw new RuntimeException(e.getMessage(), e);
+        } catch (IllegalAccessException e) {
+            throw new ServiceException(e.getMessage(), e);
         } catch (InstantiationException e) {
-            throw new RuntimeException(e.getMessage(), e);
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 }

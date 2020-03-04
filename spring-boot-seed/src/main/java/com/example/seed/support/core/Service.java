@@ -1,6 +1,5 @@
 package com.example.seed.support.core;
 
-import org.apache.ibatis.exceptions.TooManyResultsException;
 import tk.mybatis.mapper.entity.Condition;
 
 import java.util.ArrayList;
@@ -63,9 +62,16 @@ public interface Service<T> {
      * @param fieldName
      * @param value
      * @return
-     * @throws TooManyResultsException
      */
-    T findOneBy(String fieldName, Object value) throws TooManyResultsException;
+    T findOneBy(String fieldName, Object value);
+
+    /**
+     * //通过Model中某个成员变量名称（非数据表中column的名称）查找,value需符合unique约束
+     * @param fieldName
+     * @param value
+     * @return 返回自定类
+     */
+    <M> M findOneBy(String fieldName, Object value, Class<M> m);
 
     /**
      * 查询数据条数（表对象类）
@@ -73,6 +79,14 @@ public interface Service<T> {
      * @return
      */
     int findCountTb(T model);
+
+    /**
+     * 查询数据条数（自定义属性）
+     * @param fieldName
+     * @param value
+     * @return
+     */
+    int findCountBy(String fieldName, Object value);
 
     /**
      * 查询数据条数（自定义对象类）
@@ -208,13 +222,14 @@ public interface Service<T> {
      * 批量保存或更新
      * @param models
      */
-    void saveOrUpdateKeySelectiveList(List<T> models);
+    void saveOrUpdateKeyList(List<T> models);
 
     /**
      * 批量保存或更新
      * @param models
+     * @param t
      */
-    void saveOrUpdateKeySelectiveList(List<Object> models, Class<T> t);
+    void saveOrUpdateKeyList(List<Object> models, Class<T> t);
 
     /**
      * 批量保存（表对象类）
@@ -274,6 +289,13 @@ public interface Service<T> {
     void deleteByCondition(Condition condition);
 
     /**
+     * 有条件删除(属性参数)
+     * @param fieldName
+     * @param value
+     */
+    void deleteBy(String fieldName, Object value);
+
+    /**
      * 有条件删除（对象类）
      * @param obj
      */
@@ -292,7 +314,7 @@ public interface Service<T> {
     void deleteByIds(String ids);
 
     /**
-     *
+     * 通过查询返回条件删除表信息
      * @param condition
      */
     void deleteBySelectCondition(Condition condition);

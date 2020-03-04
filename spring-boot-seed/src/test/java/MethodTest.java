@@ -1,3 +1,5 @@
+import com.example.seed.model.entity.Shop;
+
 /**
  * @author wuxiaopeng
  * @description:
@@ -5,7 +7,15 @@
  */
 public class MethodTest {
     public static void main(String[] args) {
-        getInfo();
+        Shop shop = new Shop();
+        shop.setId(0);
+        shop.setShopId(0);
+
+        Shop shop1 = new Shop();
+        shop1.setId(0);
+        shop1.setShopId(0);
+        System.out.println(shop.equals(shop1));
+
     }
 
     public static void getInfo(){

@@ -2,7 +2,7 @@ package com.example.seed.support.core;
 
 
 import com.example.seed.support.exception.ServiceException;
-import org.apache.ibatis.exceptions.TooManyResultsException;
+import com.github.pagehelper.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Condition;
@@ -44,6 +44,7 @@ public abstract class AbstractService<T> implements Service<T> {
         return BeanUtil.toModelClass(mapper.selectByPrimaryKey(id), m);
     }
 
+
     @Override
     public T findOneTb(T model) {
         return mapper.selectOne(model);
@@ -79,21 +80,23 @@ public abstract class AbstractService<T> implements Service<T> {
     }
 
     @Override
-    public T findOneBy(String fieldName, Object value) throws TooManyResultsException {
-        try {
-            T model = modelClass.newInstance();
-            Field field = modelClass.getDeclaredField(fieldName);
-            field.setAccessible(true);
-            field.set(model, value);
-            return mapper.selectOne(model);
-        } catch (ReflectiveOperationException e) {
-            throw new ServiceException(e.getMessage(), e);
-        }
+    public T findOneBy(String fieldName, Object value) {
+        return mapper.selectOne(getFiledT(fieldName, value));
+    }
+
+    @Override
+    public <M> M findOneBy(String fieldName, Object value, Class<M> m) {
+        return BeanUtil.toModelClass(mapper.selectOne(getFiledT(fieldName, value)), m);
     }
 
     @Override
     public int findCountTb(T model) {
         return mapper.selectCount(model);
+    }
+
+    @Override
+    public int findCountBy(String fieldName, Object value) {
+        return mapper.selectCount(getFiledT(fieldName, value));
     }
 
     @Override
@@ -128,7 +131,11 @@ public abstract class AbstractService<T> implements Service<T> {
 
     @Override
     public <M> ArrayList<M> findListByCondition(Condition condition, Class<M> m) {
-        return BeanUtil.toModelList(mapper.selectByCondition(condition), m);
+        List<T> list = mapper.selectByCondition(condition);
+        if (list instanceof Page) {
+            return BeanUtil.toModelListPages(list, m);
+        }
+        return BeanUtil.toModelList(list, m);
     }
 
     @Override
@@ -214,13 +221,13 @@ public abstract class AbstractService<T> implements Service<T> {
     }
 
     @Override
-    public void saveOrUpdateKeySelectiveList(List<T> models) {
-        mapper.insertOrUpdateSelectiveList(models);
+    public void saveOrUpdateKeyList(List<T> models) {
+        mapper.insertOrUpdateList(models);
     }
 
     @Override
-    public void saveOrUpdateKeySelectiveList(List<Object> models, Class<T> t) {
-        mapper.insertOrUpdateSelectiveList(BeanUtil.toModelList(models, t));
+    public void saveOrUpdateKeyList(List<Object> models, Class<T> t) {
+        mapper.insertOrUpdateList(BeanUtil.toModelList(models, t));
     }
 
     @Override
@@ -270,6 +277,11 @@ public abstract class AbstractService<T> implements Service<T> {
     }
 
     @Override
+    public void deleteBy(String fieldName, Object value) {
+        mapper.deleteByCondition(getConditionObject(getFiledT(fieldName, value)));
+    }
+
+    @Override
     public void deleteByObject(Object obj) {
         mapper.deleteByCondition(getConditionObject(obj));
     }
@@ -289,6 +301,26 @@ public abstract class AbstractService<T> implements Service<T> {
     public void deleteBySelectCondition(Condition condition) {
         mapper.deleteBySelectCondition(condition);
     }
+
+    /**
+     * 通过属性获取查询条件
+     *
+     * @param fieldName
+     * @param value
+     * @return
+     */
+    private T getFiledT(String fieldName, Object value) {
+        try {
+            T model = modelClass.newInstance();
+            Field field = modelClass.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            field.set(model, value);
+            return model;
+        } catch (ReflectiveOperationException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
 
     private T getObjectTb(Object obj) {
         try {

@@ -4,6 +4,10 @@ import org.apache.ibatis.annotations.InsertProvider;
 
 import java.util.List;
 
+/**
+ * @author wuxiaopeng
+ * @date 2020-03-02
+ */
 @tk.mybatis.mapper.annotation.RegisterMapper
 public interface InsertOrUpdateMapper<T> {
     /**
@@ -22,5 +26,5 @@ public interface InsertOrUpdateMapper<T> {
      * @return
      */
     @InsertProvider(type = InsertOrUpdate.class, method = "dynamicSQL")
-    int insertOrUpdateSelectiveList(List<? extends T> recordList);
+    int insertOrUpdateList(List<? extends T> recordList);
 }

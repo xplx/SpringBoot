@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
  */
 @Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface MapperParamCondition {
+public @interface ParamCondition {
     /**
      * @value: 表字段名称
      * @return
