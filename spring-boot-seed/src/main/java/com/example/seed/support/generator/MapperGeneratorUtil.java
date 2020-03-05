@@ -1,24 +1,25 @@
-package com.example.seed.support.core;
+package com.example.seed.support.generator;
 
+import com.example.seed.support.utils.EmptyUtil;
 import com.google.common.base.CaseFormat;
 import freemarker.template.TemplateExceptionHandler;
 import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.DefaultShellCallback;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import static com.example.seed.support.core.ProjectConstant.*;
 
 /**
  * @author wuxiaopeng
  * @description: 构建模板代码工具类
  * @date 2020/3/4 15:29
  */
-public class TkGeneratorUtil {
+public class MapperGeneratorUtil {
     //JDBC配置，请修改为你项目的实际配置
     private static final String JDBC_URL = ProjectConstant.JDBC_URL;
     private static final String JDBC_USERNAME = ProjectConstant.JDBC_USERNAME;
@@ -32,21 +33,21 @@ public class TkGeneratorUtil {
     private static final String RESOURCES_PATH = ProjectConstant.RESOURCES_PATH;
     private static final String XML_PATH = ProjectConstant.XML_PATH;
 
-    private static final String PACKAGE_PATH_SERVICE = packageConvertPath(SERVICE_PACKAGE);
-    private static final String PACKAGE_PATH_SERVICE_IMPL = packageConvertPath(SERVICE_IMPL_PACKAGE);
-    private static final String PACKAGE_PATH_CONTROLLER = packageConvertPath(CONTROLLER_PACKAGE);
+    private static final String PACKAGE_PATH_SERVICE = packageConvertPath(ProjectConstant.SERVICE_PACKAGE);
+    private static final String PACKAGE_PATH_SERVICE_IMPL = packageConvertPath(ProjectConstant.SERVICE_IMPL_PACKAGE);
+    private static final String PACKAGE_PATH_CONTROLLER = packageConvertPath(ProjectConstant.CONTROLLER_PACKAGE);
 
     //@author
     private static final String AUTHOR = ProjectConstant.AUTHOR;
     //@date
     private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
 
-    public static void main(String[] args) {
-        //
-        genMoreTable("user_info");
-        //genCodeByCustomModelName("tb_user_info", "UserInfo");
-        //genCodeByCustomModelName("输入表名","输入自定义Model名称");
-    }
+//    public static void main(String[] args) {
+//        //
+//        genMoreTable("user_info");
+//        //genCodeByCustomModelName("tb_user_info", "UserInfo");
+//        //genCodeByCustomModelName("输入表名","输入自定义Model名称");
+//    }
 
     /**
      * 通过数据表名称生成代码，Model 名称通过解析数据表名称获得，下划线转大驼峰的形式。
@@ -86,7 +87,7 @@ public class TkGeneratorUtil {
          * 自己配置代码注释
          */
         CommentGeneratorConfiguration commentGeneratorConfiguration = new CommentGeneratorConfiguration();
-        commentGeneratorConfiguration.setConfigurationType("com.example.seed.support.core.MyCommentGenerator");
+        commentGeneratorConfiguration.setConfigurationType("tk.mybatis.template.core.MyCommentGenerator");
         commentGeneratorConfiguration.addProperty("suppressAllComments", "false");
         context.setCommentGeneratorConfiguration(commentGeneratorConfiguration);
 
@@ -99,38 +100,38 @@ public class TkGeneratorUtil {
 
         PluginConfiguration pluginConfiguration = new PluginConfiguration();
         pluginConfiguration.setConfigurationType("tk.mybatis.mapper.generator.MapperPlugin");
-        pluginConfiguration.addProperty("mappers", MAPPER_INTERFACE_REFERENCE);
+        pluginConfiguration.addProperty("mappers", "tk.mybatis.template.core.Mapper");
         pluginConfiguration.addProperty("lombok", "ToString");
         pluginConfiguration.addProperty("swagger", "true");
         context.addPluginConfiguration(pluginConfiguration);
 
         JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = new JavaModelGeneratorConfiguration();
         javaModelGeneratorConfiguration.setTargetProject(PROJECT_PATH + JAVA_PATH);
-        javaModelGeneratorConfiguration.setTargetPackage(MODEL_PACKAGE);
+        javaModelGeneratorConfiguration.setTargetPackage(ProjectConstant.MODEL_PACKAGE);
         context.setJavaModelGeneratorConfiguration(javaModelGeneratorConfiguration);
 
         File fileMapper = new File(PROJECT_PATH + RESOURCES_PATH + XML_PATH + "/" +
-                tableNameConvertUpperCamel(tableName) + "Mapper.xml");
+                tableNameConvertUpperCamel(EmptyUtil.isNotEmpty(modelName) ? modelName : tableName) + "Mapper.xml");
         if (!fileMapper.exists()) {
             SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
             sqlMapGeneratorConfiguration.setTargetProject(PROJECT_PATH + RESOURCES_PATH);
             sqlMapGeneratorConfiguration.setTargetPackage(XML_PATH);
             context.setSqlMapGeneratorConfiguration(sqlMapGeneratorConfiguration);
-            System.out.println(tableNameConvertUpperCamel(tableName) + "Mapper.xml 生成成功");
+            System.out.println(tableNameConvertUpperCamel(EmptyUtil.isNotEmpty(modelName) ? modelName : tableName) + "Mapper.xml 生成成功");
         }else {
             System.out.println("已存在:" + fileMapper.getPath());
         }
 
         File fileMapperJava = new File(PROJECT_PATH + JAVA_PATH +  "/" +
-                packageConvertPath(MAPPER_PACKAGE) + "/" +
-                tableNameConvertUpperCamel(tableName) + "Mapper.java");
+                packageConvertPath(ProjectConstant.MAPPER_PACKAGE) + "/" +
+                tableNameConvertUpperCamel(EmptyUtil.isNotEmpty(modelName) ? modelName : tableName) + "Mapper.java");
         if (!fileMapperJava.exists()) {
             JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
             javaClientGeneratorConfiguration.setTargetProject(PROJECT_PATH + JAVA_PATH);
-            javaClientGeneratorConfiguration.setTargetPackage(MAPPER_PACKAGE);
+            javaClientGeneratorConfiguration.setTargetPackage(ProjectConstant.MAPPER_PACKAGE);
             javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
             context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);
-            System.out.println(tableNameConvertUpperCamel(tableName) + "Mapper.java 生成成功");
+            System.out.println(tableNameConvertUpperCamel(EmptyUtil.isNotEmpty(modelName) ? modelName : tableName) + "Mapper.java 生成成功");
         }else {
             System.out.println("已存在:" + fileMapperJava.getPath());
         }
@@ -180,7 +181,7 @@ public class TkGeneratorUtil {
             String modelNameUpperCamel = StringUtils.isEmpty(modelName) ? tableNameConvertUpperCamel(tableName) : modelName;
             data.put("modelNameUpperCamel", modelNameUpperCamel);
             data.put("modelNameLowerCamel", tableNameConvertLowerCamel(tableName));
-            data.put("basePackage", BASE_PACKAGE);
+            data.put("basePackage", ProjectConstant.BASE_PACKAGE);
 
             File file = new File(PROJECT_PATH + JAVA_PATH + PACKAGE_PATH_SERVICE + modelNameUpperCamel + "Service.java");
             if (!file.getParentFile().exists()) {
@@ -222,7 +223,7 @@ public class TkGeneratorUtil {
             data.put("baseRequestMapping", modelNameConvertMappingPath(modelNameUpperCamel));
             data.put("modelNameUpperCamel", modelNameUpperCamel);
             data.put("modelNameLowerCamel", CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, modelNameUpperCamel));
-            data.put("basePackage", BASE_PACKAGE);
+            data.put("basePackage", ProjectConstant.BASE_PACKAGE);
 
             File file = new File(PROJECT_PATH + JAVA_PATH + PACKAGE_PATH_CONTROLLER + modelNameUpperCamel + "Controller.java");
             if (file.exists()) {

@@ -3,7 +3,6 @@ package com.example.seed.controller;
 import com.example.seed.model.dto.UserInfoDto;
 import com.example.seed.model.entity.UserInfo;
 import com.example.seed.service.UserInfoService;
-import com.example.seed.support.param.ConditionRewrite;
 import com.example.seed.support.utils.Result;
 import com.example.seed.support.utils.enums.StatusCode;
 import com.github.pagehelper.PageHelper;
@@ -17,6 +16,8 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
+import tk.mybatis.template.annotation.ConditionRewrite;
+
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,7 +31,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user/info")
 @Api(tags = "UserInfoController")
-public class UserInfoController {
+public class UserInfoControllerTemp {
     @Resource
     private UserInfoService userInfoService;
 

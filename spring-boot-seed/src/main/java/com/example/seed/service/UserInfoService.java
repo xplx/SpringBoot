@@ -1,6 +1,6 @@
 package com.example.seed.service;
 import com.example.seed.model.entity.UserInfo;
-import com.example.seed.support.core.Service;
+import tk.mybatis.template.core.Service;
 
 
 /**

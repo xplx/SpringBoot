@@ -1,6 +1,6 @@
 package ${basePackage}.service;
 import ${basePackage}.model.entity.${modelNameUpperCamel};
-import ${basePackage}.support.core.Service;
+import tk.mybatis.template.core.Service;
 
 
 /**

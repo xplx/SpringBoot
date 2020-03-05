@@ -9,11 +9,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import tk.mybatis.spring.mapper.MapperScannerConfigurer;
-
 import javax.sql.DataSource;
 import java.util.Properties;
 
-import static com.example.seed.support.core.ProjectConstant.*;
+import static com.example.seed.support.generator.ProjectConstant.MAPPER_PACKAGE;
+import static com.example.seed.support.generator.ProjectConstant.MODEL_PACKAGE;
+
 
 /**
  * Mybatis & Mapper & PageHelper 配置
@@ -52,7 +53,7 @@ public class MybatisConfigurer {
 
         //配置通用Mapper，详情请查阅官方文档
         Properties properties = new Properties();
-        properties.setProperty("mappers", MAPPER_INTERFACE_REFERENCE);
+        properties.setProperty("mappers", "tk.mybatis.template.core.Mapper");
         //insert、update是否判断字符串类型!='' 即 test="str != null"表达式内是否追加 and str != ''
         properties.setProperty("notEmpty", "true");
         ////主键自增回写方法,默认值MYSQL,详细说明请看文档

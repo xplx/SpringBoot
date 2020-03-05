@@ -3,10 +3,9 @@ package ${basePackage}.service.impl;
 import ${basePackage}.mapper.${modelNameUpperCamel}Mapper;
 import ${basePackage}.model.entity.${modelNameUpperCamel};
 import ${basePackage}.service.${modelNameUpperCamel}Service;
-import ${basePackage}.support.core.AbstractService;
+import tk.mybatis.template.core.AbstractService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
 
 

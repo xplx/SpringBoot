@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.seed.mapper.InfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.seed.model.entity.Info">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="order" jdbcType="VARCHAR" property="order" />
+  </resultMap>
+</mapper>

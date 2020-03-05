@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.openfeign.FeignClient;
+import tk.mybatis.spring.annotation.MapperScan;
 
 /**
  * @author wuxiaopeng
@@ -13,6 +14,7 @@ import org.springframework.cloud.openfeign.FeignClient;
  */
 @SpringBootApplication
 @EnableCaching
+@MapperScan(basePackages = {"com.example.seed.mapper"})
 public class SpringBootSeedApplication {
 
     public static void main(String[] args) {

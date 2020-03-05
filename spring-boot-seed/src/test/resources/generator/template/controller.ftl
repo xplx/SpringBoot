@@ -80,7 +80,7 @@ public class ${modelNameUpperCamel}Controller {
     @PostMapping("/add")
     public Result add(${modelNameUpperCamel} ${modelNameLowerCamel}) {
         try{
-            ${modelNameLowerCamel}Service.save(${modelNameLowerCamel});
+            ${modelNameLowerCamel}Service.saveSelectiveObject(${modelNameLowerCamel});
         }catch (Exception e) {
             log.error("${modelNameUpperCamel}Controller 保存信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("${modelNameUpperCamel}Controller 保存信息异常!");
@@ -92,7 +92,7 @@ public class ${modelNameUpperCamel}Controller {
     @PutMapping("/update")
     public Result update(${modelNameUpperCamel} ${modelNameLowerCamel}) {
         try{
-            ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
+            ${modelNameLowerCamel}Service.updateByKeySelectiveTb(${modelNameLowerCamel});
         }catch (Exception e) {
             log.error("${modelNameUpperCamel}Controller 更新信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("${modelNameUpperCamel}Controller 更新信息异常!");

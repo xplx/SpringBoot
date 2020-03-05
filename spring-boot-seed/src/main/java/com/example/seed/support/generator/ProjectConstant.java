@@ -1,13 +1,10 @@
-package com.example.seed.support.core;
+package com.example.seed.support.generator;
 
 /**
  * 项目常量
  * @author 吴小鹏
  */
 public final class ProjectConstant {
-    /**
-     * 生成代码所在的基础包名称，可根据自己公司的项目修改（注意：这个配置修改之后需要手工修改src目录项目默认的包路径，使其保持一致，不然会找不到类）
-     */
     public static final String BASE_PACKAGE = "com.example.seed";
     //生成的Model所在包
     public static final String MODEL_PACKAGE = BASE_PACKAGE + ".model.entity";
@@ -19,11 +16,6 @@ public final class ProjectConstant {
     public static final String SERVICE_IMPL_PACKAGE = SERVICE_PACKAGE + ".impl";
     //生成的Controller所在包
     public static final String CONTROLLER_PACKAGE = BASE_PACKAGE + ".controller";
-    //Mapper插件基础接口的完全限定名
-    public static final String MAPPER_INTERFACE_REFERENCE = BASE_PACKAGE + ".support.core.Mapper";
-    //自动生成entity的注释类
-    public static final String MY_COMMENTGENERATOR = BASE_PACKAGE + ".support.core.MyCommentGenerator";
-
 
 
     //JDBC配置，请修改为你项目的实际配置

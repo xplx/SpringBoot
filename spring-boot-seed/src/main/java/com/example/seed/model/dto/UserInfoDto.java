@@ -1,8 +1,8 @@
 package com.example.seed.model.dto;
 
-import com.example.seed.support.param.ParamCondition;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import tk.mybatis.template.annotation.ParamCondition;
 
 import javax.persistence.Transient;
 
