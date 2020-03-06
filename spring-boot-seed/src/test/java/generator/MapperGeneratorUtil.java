@@ -8,6 +8,8 @@ import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.DefaultShellCallback;
+import org.mybatis.generator.plugins.SerializablePlugin;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -103,6 +105,8 @@ public class MapperGeneratorUtil {
         pluginConfiguration.addProperty("mappers", "tk.mybatis.template.core.Mapper");
         pluginConfiguration.addProperty("lombok", "ToString");
         pluginConfiguration.addProperty("swagger", "true");
+        //序列化插件
+        pluginConfiguration.setConfigurationType("org.mybatis.generator.plugins.SerializablePlugin");
         context.addPluginConfiguration(pluginConfiguration);
 
         JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = new JavaModelGeneratorConfiguration();
