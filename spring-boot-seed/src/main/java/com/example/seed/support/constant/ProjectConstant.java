@@ -1,4 +1,4 @@
-package com.example.seed.support.generator;
+package com.example.seed.support.constant;
 
 /**
  * 项目常量

@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 @Service
 @Transactional
 public class ShopServiceImpl extends AbstractService<Shop> implements ShopService {
-    @Autowired
+    @Resource
     private ShopMapper shopMapper;
 
 }

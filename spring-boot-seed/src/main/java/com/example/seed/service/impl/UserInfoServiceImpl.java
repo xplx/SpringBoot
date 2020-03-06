@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 @Service
 @Transactional
 public class UserInfoServiceImpl extends AbstractService<UserInfo> implements UserInfoService {
-    @Autowired
+    @Resource
     private UserInfoMapper userInfoMapper;
 
 }

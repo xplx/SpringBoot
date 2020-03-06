@@ -12,8 +12,8 @@ import tk.mybatis.spring.mapper.MapperScannerConfigurer;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-import static com.example.seed.support.generator.ProjectConstant.MAPPER_PACKAGE;
-import static com.example.seed.support.generator.ProjectConstant.MODEL_PACKAGE;
+import static com.example.seed.support.constant.ProjectConstant.MAPPER_PACKAGE;
+import static com.example.seed.support.constant.ProjectConstant.MODEL_PACKAGE;
 
 
 /**
