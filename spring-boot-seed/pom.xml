@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <skipTests>true</skipTests>
     </properties>
 
     <dependencies>
@@ -209,8 +210,8 @@
             <version>1.2.0</version>
         </dependency>
         <dependency>
-            <groupId>xp.mapper.mybatis</groupId>
-            <artifactId>mapper-template</artifactId>
+            <groupId>center.wxp</groupId>
+            <artifactId>mybatis.mapper</artifactId>
             <version>1.0.0</version>
         </dependency>
     </dependencies>
