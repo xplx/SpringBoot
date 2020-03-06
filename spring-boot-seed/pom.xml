@@ -122,6 +122,7 @@
             <groupId>org.freemarker</groupId>
             <artifactId>freemarker</artifactId>
             <version>2.3.23</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mybatis.generator</groupId>
@@ -230,6 +231,13 @@
                 <configuration>
                     <!--fork:如果没有该项配置,整个devtools不会起作用-->
                     <fork>true</fork>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
                 </configuration>
             </plugin>
         </plugins>

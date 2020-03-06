@@ -1,5 +1,6 @@
+package generator;
 
-import static com.example.seed.support.generator.MapperGeneratorUtil.genCodeByCustomModelName;
+import static generator.MapperGeneratorUtil.genMoreTable;
 
 /**
  * @author wuxiaopeng
@@ -9,9 +10,9 @@ import static com.example.seed.support.generator.MapperGeneratorUtil.genCodeByCu
 public class GeneratorCode {
     public static void main(String[] args) {
         //生成表、可以使用数组同时生成多张表
-        //TkGeneratorUtil.genMoreTable("user_info");
+        genMoreTable("user_info");
         //自定义生成的类名
-        genCodeByCustomModelName("user_info", "Info");
+        //genCodeByCustomModelName("user_info", "Info");
         //genMoreTable("user_info");
     }
 }

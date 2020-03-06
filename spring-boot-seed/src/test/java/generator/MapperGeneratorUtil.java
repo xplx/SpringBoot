@@ -1,5 +1,6 @@
-package com.example.seed.support.generator;
+package generator;
 
+import com.example.seed.support.constant.ProjectConstant;
 import com.example.seed.support.utils.EmptyUtil;
 import com.google.common.base.CaseFormat;
 import freemarker.template.TemplateExceptionHandler;
@@ -7,7 +8,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.DefaultShellCallback;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

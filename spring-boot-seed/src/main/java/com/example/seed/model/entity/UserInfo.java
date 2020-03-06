@@ -43,6 +43,7 @@ public class UserInfo {
      * 排序
      */
     @ApiModelProperty(value = "排序")
+    @Column(name = "'order'")
     private String order;
 
     /**

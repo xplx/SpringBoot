@@ -31,7 +31,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user/info")
 @Api(tags = "UserInfoController")
-public class UserInfoControllerTemp {
+public class UserInfoController {
     @Resource
     private UserInfoService userInfoService;
 
