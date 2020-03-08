@@ -1,17 +1,13 @@
 package com.example.seed.model.entity;
 
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import javax.persistence.*;
+
+import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-import lombok.ToString;
-
-@ToString
-@ApiModel("")
-@Table(name = "user_info")
-public class UserInfo {
+public class UserInfo implements Serializable {
     /**
      * 主键id
      */
@@ -39,12 +35,7 @@ public class UserInfo {
     @ApiModelProperty(value = "密码")
     private String password;
 
-    /**
-     * 排序
-     */
-    @ApiModelProperty(value = "排序")
-    @Column(name = "'order'")
-    private String order;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 获取主键id
@@ -116,23 +107,5 @@ public class UserInfo {
      */
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    /**
-     * 获取排序
-     *
-     * @return order - 排序
-     */
-    public String getOrder() {
-        return order;
-    }
-
-    /**
-     * 设置排序
-     *
-     * @param order 排序
-     */
-    public void setOrder(String order) {
-        this.order = order;
     }
 }
