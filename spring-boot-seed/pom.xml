@@ -215,6 +215,18 @@
             <artifactId>mybatis.mapper</artifactId>
             <version>1.1.3</version>
         </dependency>
+
+        <!--爬虫使用框架-->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.3</version>
+        </dependency>
+        <dependency>
+            <groupId>edu.uci.ics</groupId>
+            <artifactId>crawler4j</artifactId>
+            <version>4.2</version>
+        </dependency>
     </dependencies>
 
     <build>
