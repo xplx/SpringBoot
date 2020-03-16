@@ -12,7 +12,6 @@ public class UserInfoDto {
      * 主键id
      */
     @ApiModelProperty("主键id")
-    @ParamCondition(pattern = "in",entityName = "id")
     private Long id;
 
     /**
@@ -34,7 +33,6 @@ public class UserInfoDto {
      * 年龄
      */
     @ApiModelProperty("年龄")
-    @ParamCondition(pattern = ">=")
     private Integer age;
 
     /**

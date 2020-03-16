@@ -3,7 +3,6 @@ package com.example.seed.service.impl;
 import com.example.seed.mapper.ShopMapper;
 import com.example.seed.model.entity.Shop;
 import com.example.seed.service.ShopService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.template.core.AbstractService;

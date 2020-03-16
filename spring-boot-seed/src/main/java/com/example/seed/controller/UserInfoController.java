@@ -1,7 +1,9 @@
 package com.example.seed.controller;
 
+import center.wxp.log.annotation.ResultLog;
 import com.example.seed.model.dto.UserInfoDto;
 import com.example.seed.model.entity.UserInfo;
+import com.example.seed.model.vo.UserInfoVo;
 import com.example.seed.service.UserInfoService;
 import com.example.seed.support.utils.Result;
 import com.example.seed.support.utils.enums.StatusCode;
@@ -35,15 +37,16 @@ public class UserInfoController {
     @Resource
     private UserInfoService userInfoService;
 
+    @ResultLog("测试接口名称")
     @ApiOperation(value = "获取信息list，自定义注解查询")
     @GetMapping("/infoList")
     public Result<UserInfo> infoList(UserInfoDto userInfo) {
-        List<UserInfo> userInfoList = new ArrayList<>();
+        List<UserInfoVo> userInfoList = new ArrayList<>();
         try {
             //通过注解获取相应的条件信息
             Condition condition = ConditionRewrite.equalToCondition(new Condition(UserInfo.class), userInfo);
             condition.orderBy("id").desc();
-            userInfoList = userInfoService.findListByCondition(condition, UserInfo.class);
+            userInfoList = userInfoService.findListByCondition(condition, UserInfoVo.class);
         } catch (Exception e) {
             log.error("UserInfoController 获取信息异常:{}", e);
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("UserInfoController 获取信息异常!");

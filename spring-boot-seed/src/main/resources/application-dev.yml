@@ -17,3 +17,9 @@ spring.redis.password: 123456
 
 spring.freemarker.suffix: .ftl
 spring.freemarker.settings.recognize_standard_file_extensions: true
+center:
+  wxp:
+    log:
+      enabled: true
+      enabled-global-print: true
+      position: ALL
