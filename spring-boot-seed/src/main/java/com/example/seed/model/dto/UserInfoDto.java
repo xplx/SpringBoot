@@ -5,6 +5,7 @@ import lombok.Data;
 import tk.mybatis.template.annotation.ParamCondition;
 
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 @Data
 public class UserInfoDto {
@@ -12,6 +13,7 @@ public class UserInfoDto {
      * 主键id
      */
     @ApiModelProperty("主键id")
+    @NotNull
     private Long id;
 
     /**

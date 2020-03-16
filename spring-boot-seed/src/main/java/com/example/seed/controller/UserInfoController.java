@@ -16,11 +16,14 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import tk.mybatis.mapper.entity.Condition;
 import tk.mybatis.template.annotation.ConditionRewrite;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -33,6 +36,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/user/info")
 @Api(tags = "UserInfoController")
+@Validated
 public class UserInfoController {
     @Resource
     private UserInfoService userInfoService;
@@ -40,7 +44,10 @@ public class UserInfoController {
     @ResultLog("测试接口名称")
     @ApiOperation(value = "获取信息list，自定义注解查询")
     @GetMapping("/infoList")
-    public Result<UserInfo> infoList(UserInfoDto userInfo) {
+    public Result<UserInfo> infoList(@Valid UserInfoDto userInfo, BindingResult bindingResult) {
+        if (bindingResult.hasFieldErrors()) {
+            return Result.failure().setMsg(bindingResult.getAllErrors().toString());
+        }
         List<UserInfoVo> userInfoList = new ArrayList<>();
         try {
             //通过注解获取相应的条件信息
