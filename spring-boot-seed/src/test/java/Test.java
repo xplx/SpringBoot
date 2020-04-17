@@ -5,7 +5,9 @@
  */
 public class Test {
     public static void main(String[] args) {
-        Integer i = null;
-        i.toString();
+        String doubleStr = "1.00000000";
+        System.out.println(doubleStr.indexOf("."));
+        doubleStr = doubleStr.substring(0, doubleStr.indexOf("."));
+        System.out.println(doubleStr);
     }
 }

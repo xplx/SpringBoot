@@ -1,5 +1,9 @@
 package com.example.seed.support.config;
 
+import com.example.seed.support.mybatis.plugin.PageHelperPlugin;
+import com.example.seed.support.mybatis.plugin.SqlExecuteTimeCountInterceptor;
+import com.example.seed.support.mybatis.plugin.SqlInsertOrUpdateInterceptor;
+import com.example.seed.support.mybatis.plugin.SqlStatusInterceptor;
 import com.github.pagehelper.PageHelper;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -9,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import tk.mybatis.spring.mapper.MapperScannerConfigurer;
+
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -42,12 +47,35 @@ public class MybatisConfigurer {
         //添加插件
         factory.setPlugins(new Interceptor[]{pageHelper});
 
+        //自定义插件
+        PageHelperPlugin pageHelperPlugin = new PageHelperPlugin();
+        pageHelperPlugin.setProperties(properties);
+
+        //自定义插件，改写sql语句
+        SqlStatusInterceptor sqlStatusInterceptor = new SqlStatusInterceptor();
+
+        //自定义插件，获取执行时间
+        SqlExecuteTimeCountInterceptor sqlExecuteTimeCountInterceptor = new SqlExecuteTimeCountInterceptor();
+
+        //自定义插件，保存或更新时间
+        SqlInsertOrUpdateInterceptor sqlInsertOrUpdateInterceptor = new SqlInsertOrUpdateInterceptor();
+
+        //加载插件数组
+        Interceptor[] interceptors = {pageHelper, sqlInsertOrUpdateInterceptor, sqlExecuteTimeCountInterceptor};
+        factory.setPlugins(interceptors);
         //添加XML目录
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        factory.setConfigLocation(resolver.getResource("classpath:mybatis-config.xml"));
         factory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
+        //构建会话工厂SqlSessionFactory
         return factory.getObject();
     }
 
+    /**
+     * TK的全局配置
+     *
+     * @return
+     */
     @Bean
     public MapperScannerConfigurer mapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();

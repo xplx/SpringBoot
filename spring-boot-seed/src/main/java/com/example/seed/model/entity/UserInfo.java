@@ -1,13 +1,21 @@
 package com.example.seed.model.entity;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
 
-public class UserInfo implements Serializable {
+@ToString
+@ApiModel("")
+@Table(name = "user_info")
+public class UserInfo {
     /**
      * 主键id
      */
@@ -35,7 +43,38 @@ public class UserInfo implements Serializable {
     @ApiModelProperty(value = "密码")
     private String password;
 
-    private static final long serialVersionUID = 1L;
+    /**
+     * 状态值
+     */
+    @ApiModelProperty(value = "状态值")
+    @Column(name = "status_value")
+    private String statusValue;
+
+    /**
+     * 状态（0：未退休，1：已退休）
+     */
+    @ApiModelProperty(value = "状态（0：未退休，1：已退休）", example="0")
+    private Integer status;
+
+    /**
+     * 薪资
+     */
+    @ApiModelProperty(value = "薪资", example="0.00")
+    private BigDecimal salary;
+
+    /**
+     * 创建时间
+     */
+    @ApiModelProperty(value = "创建时间")
+    @Column(name = "create_time")
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    @ApiModelProperty(value = "更新时间")
+    @Column(name = "update_time")
+    private Date updateTime;
 
     /**
      * 获取主键id
@@ -107,5 +146,95 @@ public class UserInfo implements Serializable {
      */
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    /**
+     * 获取状态值
+     *
+     * @return status_value - 状态值
+     */
+    public String getStatusValue() {
+        return statusValue;
+    }
+
+    /**
+     * 设置状态值
+     *
+     * @param statusValue 状态值
+     */
+    public void setStatusValue(String statusValue) {
+        this.statusValue = statusValue;
+    }
+
+    /**
+     * 获取状态（0：未退休，1：已退休）
+     *
+     * @return status - 状态（0：未退休，1：已退休）
+     */
+    public Integer getStatus() {
+        return status;
+    }
+
+    /**
+     * 设置状态（0：未退休，1：已退休）
+     *
+     * @param status 状态（0：未退休，1：已退休）
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    /**
+     * 获取薪资
+     *
+     * @return salary - 薪资
+     */
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    /**
+     * 设置薪资
+     *
+     * @param salary 薪资
+     */
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
+    }
+
+    /**
+     * 获取创建时间
+     *
+     * @return create_time - 创建时间
+     */
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    /**
+     * 设置创建时间
+     *
+     * @param createTime 创建时间
+     */
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    /**
+     * 获取更新时间
+     *
+     * @return update_time - 更新时间
+     */
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    /**
+     * 设置更新时间
+     *
+     * @param updateTime 更新时间
+     */
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

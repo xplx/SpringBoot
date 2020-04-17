@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.seed.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.example.seed.model.entity.User">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+  </resultMap>
+
+  <update id="updateUserInfoByKey" parameterType="com.example.seed.model.dto.UserInfoSaveUpdateDto">
+    UPDATE test.user_info
+    SET name = #{name},
+     age = #{age},
+     password = #{password},
+     salary = #{salary},
+     update_time = #{updateTime}
+    WHERE
+        id = #{id}
+  </update>
+</mapper>

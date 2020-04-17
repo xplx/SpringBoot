@@ -13,7 +13,6 @@ import io.swagger.models.Path;
 import io.swagger.models.Swagger;
 import io.swagger.models.parameters.Parameter;
 import io.swagger.models.parameters.QueryParameter;
-import io.swagger.models.properties.Property;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,7 +39,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import static com.google.common.base.Strings.isNullOrEmpty;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
@@ -109,24 +107,24 @@ public class Swagger2Controller {
         //获取swagger路径返回参数
         Map<String, Model> returnModelMap = swagger.getDefinitions();
         Iterator<Map.Entry<String, Model>> returnModelSet = returnModelMap.entrySet().iterator();
-        while (returnModelSet.hasNext()) {
-            String redisParam = redisUtil.get("param/") + "";
-            //获取路径参数
-            Map.Entry<String, Model> modeMap = returnModelSet.next();
-            String returnType = modeMap.getKey().substring(0, 3);
-            System.out.println(returnType);
-            if (!"返回类".equals(returnType)) {
-                Model modelValue = modeMap.getValue();
-
-                Map<String, Property> mapProperties = modelValue.getProperties();
-                Iterator<Map.Entry<String, Property>> iteratorProperties = mapProperties.entrySet().iterator();
-                while (iteratorProperties.hasNext()) {
-                    Map.Entry<String, Property> propertyMap = iteratorProperties.next();
-                    Property property = propertyMap.getValue();
-                    property.setExample("1000");
-                }
-            }
-        }
+//        while (returnModelSet.hasNext()) {
+//            String redisParam = redisUtil.get("param/") + "";
+//            //获取路径参数
+//            Map.Entry<String, Model> modeMap = returnModelSet.next();
+//            String returnType = modeMap.getKey().substring(0, 3);
+//            System.out.println(returnType);
+//            if (!"返回类".equals(returnType)) {
+//                Model modelValue = modeMap.getValue();
+//
+//                Map<String, Property> mapProperties = modelValue.getProperties();
+//                Iterator<Map.Entry<String, Property>> iteratorProperties = mapProperties.entrySet().iterator();
+//                while (iteratorProperties.hasNext()) {
+//                    Map.Entry<String, Property> propertyMap = iteratorProperties.next();
+//                    Property property = propertyMap.getValue();
+//                    property.setExample("1000");
+//                }
+//            }
+//        }
 
 
         //获取swagger路径参数

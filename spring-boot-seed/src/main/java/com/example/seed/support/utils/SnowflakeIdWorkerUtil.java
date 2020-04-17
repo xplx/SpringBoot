@@ -19,58 +19,105 @@ import java.util.Map; /**
  * 加起来刚好64位，为一个Long型。<br>
  * SnowFlake的优点是，整体上按照时间自增排序，并且整个分布式系统内不会产生ID碰撞(由数据中心ID和机器ID作区分)，并且效率较高，经测试，SnowFlake每秒能够产生26万ID左右。
  */
-public class SnowflakeIdUtil {
+public class SnowflakeIdWorkerUtil {
 
     // ==============================Fields===========================================
-    /** 开始时间截 (2015-01-01) */
+    /**
+     * 开始时间截 (2015-01-01)
+     */
     private final long twepoch = 1420041600000L;
 
-    /** 机器id所占的位数 */
+    /**
+     * 机器id所占的位数
+     */
     private final long workerIdBits = 5L;
 
-    /** 数据标识id所占的位数 */
+    /**
+     * 数据标识id所占的位数
+     */
     private final long datacenterIdBits = 5L;
 
-    /** 支持的最大机器id，结果是31 (这个移位算法可以很快的计算出几位二进制数所能表示的最大十进制数) */
+    /**
+     * 支持的最大机器id，结果是31 (这个移位算法可以很快的计算出几位二进制数所能表示的最大十进制数)
+     */
     private final long maxWorkerId = -1L ^ (-1L << workerIdBits);
 
-    /** 支持的最大数据标识id，结果是31 */
+    /**
+     * 支持的最大数据标识id，结果是31
+     */
     private final long maxDatacenterId = -1L ^ (-1L << datacenterIdBits);
 
-    /** 序列在id中占的位数 */
+    /**
+     * 序列在id中占的位数
+     */
     private final long sequenceBits = 12L;
 
-    /** 机器ID向左移12位 */
+    /**
+     * 机器ID向左移12位
+     */
     private final long workerIdShift = sequenceBits;
 
-    /** 数据标识id向左移17位(12+5) */
+    /**
+     * 数据标识id向左移17位(12+5)
+     */
     private final long datacenterIdShift = sequenceBits + workerIdBits;
 
-    /** 时间截向左移22位(5+5+12) */
+    /**
+     * 时间截向左移22位(5+5+12)
+     */
     private final long timestampLeftShift = sequenceBits + workerIdBits + datacenterIdBits;
 
-    /** 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095) */
+    /**
+     * 生成序列的掩码，这里为4095 (0b111111111111=0xfff=4095)
+     */
     private final long sequenceMask = -1L ^ (-1L << sequenceBits);
 
-    /** 工作机器ID(0~31) */
+    /**
+     * 工作机器ID(0~31)
+     */
     private long workerId;
 
-    /** 数据中心ID(0~31) */
+    /**
+     * 数据中心ID(0~31)
+     */
     private long datacenterId;
 
-    /** 毫秒内序列(0~4095) */
+    /**
+     * 毫秒内序列(0~4095)
+     */
     private long sequence = 0L;
 
-    /** 上次生成ID的时间截 */
+    /**
+     * 上次生成ID的时间截
+     */
     private long lastTimestamp = -1L;
 
+    private volatile static SnowflakeIdWorkerUtil snowflakeIdWorker;
+
+    /**
+     * 双重校验锁实现对象单例（线程安全）
+     * @return
+     */
+    public static SnowflakeIdWorkerUtil getInstance() {
+        if (null == snowflakeIdWorker) {
+            synchronized (SnowflakeIdWorkerUtil.class) {
+                if (null == snowflakeIdWorker) {
+                    snowflakeIdWorker = new SnowflakeIdWorkerUtil(0, 0);
+                }
+            }
+        }
+        return snowflakeIdWorker;
+    }
+
     //==============================Constructors=====================================
+
     /**
      * 构造函数
-     * @param workerId 工作ID (0~31)
+     *
+     * @param workerId     工作ID (0~31)
      * @param datacenterId 数据中心ID (0~31)
      */
-    public SnowflakeIdUtil(long workerId, long datacenterId) {
+    public SnowflakeIdWorkerUtil(long workerId, long datacenterId) {
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
         }
@@ -82,8 +129,10 @@ public class SnowflakeIdUtil {
     }
 
     // ==============================Methods==========================================
+
     /**
      * 获得下一个ID (该方法是线程安全的)
+     *
      * @return SnowflakeId
      */
     public synchronized long nextId() {
@@ -119,6 +168,7 @@ public class SnowflakeIdUtil {
 
     /**
      * 阻塞到下一个毫秒，直到获得新的时间戳
+     *
      * @param lastTimestamp 上次生成ID的时间截
      * @return 当前时间戳
      */
@@ -132,31 +182,36 @@ public class SnowflakeIdUtil {
 
     /**
      * 返回以毫秒为单位的当前时间
+     *
      * @return 当前时间(毫秒)
      */
     protected long timeGen() {
         return System.currentTimeMillis();
     }
 
-    public static String getSnowId(){
-        SnowflakeIdUtil idWorker = new SnowflakeIdUtil(0, 0);
+    public static String getSnowId() {
+        SnowflakeIdWorkerUtil idWorker = SnowflakeIdWorkerUtil.getInstance();
         long id = idWorker.nextId();
         return String.valueOf(id);
     }
 
     //==============================Test=============================================
-    /** 测试 */
+
+    /**
+     * 测试
+     */
     public static void main(String[] args) {
-        SnowflakeIdUtil idWorker = new SnowflakeIdUtil(0, 0);
-        List<Long> stringList = new ArrayList<>();
+        SnowflakeIdWorkerUtil idWorker = new SnowflakeIdWorkerUtil(0, 0);
+        List<String> stringList = new ArrayList<>();
         Map map = new HashMap();
         int count = 1000000;
         for (int i = 0; i < count; i++) {
-            long id = idWorker.nextId();
-            System.out.println(Long.toBinaryString(id));
+            //long id = idWorker.nextId();
+            String id = getSnowId();
+            //System.out.println(Long.toBinaryString(id));
             System.out.println(id);
             stringList.add(id);
-            map.put(id,id);
+            map.put(id, id);
         }
         System.out.println(stringList.size());
         System.out.println(map.size());

@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.seed.mapper.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.example.seed.model.entity.UserInfo">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="age" jdbcType="INTEGER" property="age" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="order" jdbcType="VARCHAR" property="order" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.example.seed.model.vo.UserInfoVo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="status" property="status"
+                typeHandler="com.example.seed.support.mybatis.typeHandler.StatusEnumTypeHandler"/>
+        <result column="status_value" property="statusValue"
+                typeHandler="org.apache.ibatis.type.EnumTypeHandler"/>
+    </resultMap>
+
+    <!--使用自定义枚举必须使用resultMap进行返回值-->
+    <select id="selectAllUserInfoList" useCache="true"
+            parameterType="com.example.seed.model.entity.UserInfo"
+            resultMap="BaseResultMap">
+        SELECT
+        id,
+        name,
+        age,
+        password,
+        salary,
+        status,
+        status_value
+        FROM user_info
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                name = #{name}
+            </if>
+        </where>
+    </select>
 </mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="center.wxp.mybatissource.mapper.UserInfoMapper">
+    <select id="getById" resultType="center.wxp.mybatissource.mode.UserInfoVo">
+	   select
+	   	`id`,
+		`name`,
+		`age`,
+		`password`,
+		`status_value` statusValue,
+		`status`,
+		`salary`,
+		`create_time` createTime,
+		`update_time` updateTime
+		from user_info where id = ?
+    </select>
+
+    <select id="getAll" resultType="center.wxp.mybatissource.mode.UserInfoVo">
+           select
+		    `id`,
+			`name`,
+			`age`,
+			`password`,
+			`status_value` statusValue,
+			`status`,
+			`salary`,
+			`create_time` createTime,
+			`update_time` updateTime
+           from user_info
+    </select>
+</mapper>
