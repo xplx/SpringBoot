@@ -1,6 +1,5 @@
 package com.example.seed.controller;
 
-import center.wxp.log.annotation.ResultLog;
 import com.example.seed.feign.FeignUserService;
 import com.example.seed.mapper.UserMapper;
 import com.example.seed.model.dto.UserInfoDto;
@@ -56,7 +55,6 @@ public class UserInfoController {
     }
 
 
-    @ResultLog("测试接口名称")
     @ApiOperation(value = "获取信息list，自定义注解查询")
     @GetMapping("/infoList")
     public Result<UserInfo> infoList(@Validated UserInfoDto userInfo) {
@@ -64,6 +62,10 @@ public class UserInfoController {
         //通过注解获取相应的条件信息
         Condition condition = ConditionRewrite.equalToCondition(new Condition(UserInfo.class), userInfo);
         condition.orderBy("id").desc();
+        /**
+         * 同一个session默认使用一级缓存
+         */
+        userInfoList = userInfoService.findListByCondition(condition, UserInfoVo.class);
         userInfoList = userInfoService.findListByCondition(condition, UserInfoVo.class);
         return Result.ok().setData(userInfoList);
     }

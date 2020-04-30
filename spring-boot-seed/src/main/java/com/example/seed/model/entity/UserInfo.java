@@ -9,13 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
 @ToString
 @ApiModel("")
 @Table(name = "user_info")
-public class UserInfo {
+public class UserInfo implements Serializable {
     /**
      * 主键id
      */

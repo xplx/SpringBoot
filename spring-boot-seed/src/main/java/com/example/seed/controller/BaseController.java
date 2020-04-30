@@ -4,7 +4,6 @@ import com.example.seed.support.utils.Result;
 import com.example.seed.support.utils.enums.StatusCode;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
@@ -25,8 +24,6 @@ import java.util.List;
  * @date 2019/10/31
  */
 @Slf4j
-@Api(tags = "BaseController")
-@Validated
 public class BaseController<BaseService extends Service, Entity> {
     @Autowired
     protected HttpServletRequest request;
@@ -51,7 +48,7 @@ public class BaseController<BaseService extends Service, Entity> {
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", dataType = "String", name = "id", value = "id")
     })
-    public Result<Entity> get(@Valid @NotEmpty @RequestParam String id) {
+    public Result<Entity> get(@Validated @NotEmpty @RequestParam String id) {
         Object obj = service.findById(id);
         return Result.ok().setData(obj);
     }
@@ -80,7 +77,7 @@ public class BaseController<BaseService extends Service, Entity> {
 
     @PostMapping(value = "save")
     @ApiOperation(value = "保存信息（主键id自动生成）")
-    public Result save(@Valid @RequestBody Entity entity, BindingResult bindingResult){
+    public Result save(@Valid  Entity entity, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
             return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg(bindingResult.getAllErrors().toString());
         }

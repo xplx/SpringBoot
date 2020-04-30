@@ -20,5 +20,4 @@ import javax.annotation.Resource;
 public class UserController extends BaseController<UserService, User> {
     @Resource
     private UserService userService;
-
 }
