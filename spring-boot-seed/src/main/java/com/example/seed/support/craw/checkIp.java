@@ -42,17 +42,18 @@ public class checkIp implements Runnable {
                 long a = System.currentTimeMillis();
                 //爬取的目标网站，url记得换下。
                 Random random = new Random();
-                int index = random.nextInt(accessIps.length - 1);
-                Document doc = Jsoup.connect(accessIps[index])
+                //int index = random.nextInt(accessIps.length - 1);
+                Document doc = Jsoup.connect(accessIps[0])
                         .timeout(20000)
                         .proxy(ip, port)
                         .data(map)
                         .ignoreContentType(true)
                         .userAgent(userAgent())
-                        .header("referer", "https://blog.csdn.net/xp_lx1/article/list/")//这个来源记得换..
+                        .header("referer", "https://live.kuaishou.com/profile/3xxdggu79ueqjb6")//这个来源记得换..
                         .get();
+                System.out.println(doc);
                 //System.out.println(ip+":"+port+"访问时间:"+(System.currentTimeMillis() -a) + "   访问结果: "+doc.text());
-                System.out.println("访问博客：" + accessIps[index] + " 代理游览器：" + userAgent());
+                System.out.println("访问博客：" + accessIps[0] + " 代理游览器：" + userAgent());
                 System.out.println("成功次数：" + suc++ + "  " + ip + ":" + port + "访问时间:" + (System.currentTimeMillis() - a));
             }
         } catch (IOException e) {

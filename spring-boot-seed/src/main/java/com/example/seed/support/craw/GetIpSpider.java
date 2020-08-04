@@ -26,7 +26,7 @@ public class GetIpSpider {
         System.out.println("Start: ");
         Integer validCount = 0;
         IPSpider spider = new IPSpider();
-        List<IPBean> list = spider.crawlHttp(240);
+        List<IPBean> list = spider.crawlHttp(40);
         System.out.println("爬取数量：" + list.size());
 
         //开启线程池

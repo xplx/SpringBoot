@@ -20,6 +20,36 @@ import java.util.concurrent.Executors;
  */
 public class MainReaderFile {
     public static void main(String[] args) throws InterruptedException, IOException {
+        accessKuaiShou();
+    }
+
+    private static void accessKuaiShou() throws InterruptedException {
+        FileReader fileReader = new FileReader("D:\\ip.txt");
+        System.out.println("ip总数：" + fileReader.readLines().size());
+        int count = 0;
+        //获取所有博客ip地址
+        String[] accessIps = new String[]{"https://live.kuaishou.com/u/3xxdggu79ueqjb6/3xk2fb4dt4hebzu?did=web_cdea2527bc0fcefe1a799be8498cbfeb"};
+        while (true) {
+            System.out.println("循环次数：" + count++);
+            //开启线程池
+            ExecutorService exe = Executors.newFixedThreadPool(fileReader.readLines().size());
+            for (String str : fileReader.readLines()) {
+                String[] ips = str.split(":");
+                String ip = ips[0];
+                int port = Integer.parseInt(ips[1]);
+                checkIp checkIp = new checkIp(ip, port, fileReader.readLines().size(), accessIps);
+                exe.execute(checkIp);
+                Thread.sleep(10);
+            }
+            Thread.sleep(10000);
+            exe.shutdown();
+        }
+    }
+
+    /**
+     * 访问CSDN博客
+     */
+    private static void accessCSDN() throws IOException, InterruptedException {
         FileReader fileReader = new FileReader("D:\\ip.txt");
         System.out.println("ip总数：" + fileReader.readLines().size());
         int count = 0;

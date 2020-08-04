@@ -42,7 +42,8 @@ public class IPUtils {
     public static boolean isValid(IPBean ipBean) {
         Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(ipBean.getIp(), ipBean.getPort()));
         try {
-            URLConnection httpCon = new URL("https://blog.csdn.net/").openConnection(proxy);
+            //URLConnection httpCon = new URL("https://blog.csdn.net/").openConnection(proxy);
+            URLConnection httpCon = new URL("https://live.kuaishou.com/u/3xxdggu79ueqjb6/3xk2fb4dt4hebzu?did=web_7313576fc14e756a67fb9c772fe277ad").openConnection(proxy);
             httpCon.setConnectTimeout(20000);
             httpCon.setReadTimeout(20000);
             int code = ((HttpURLConnection) httpCon).getResponseCode();
