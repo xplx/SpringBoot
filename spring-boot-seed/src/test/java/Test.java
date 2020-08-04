@@ -1,3 +1,11 @@
+import com.alibaba.fastjson.JSON;
+import org.junit.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static jdk.internal.dynalink.CallSiteDescriptor.OPERATOR;
+
 /**
  * @author wuxiaopeng
  * @description:
@@ -5,21 +13,15 @@
  */
 public class Test {
     public static void main(String[] args) {
-        int a = 1;
-        new Test().f1(a);
-        System.out.println(a);
-        int[] b = {1, 2};
-        new Test().f2(b);
-        System.out.println(b[0]);
-    }
+//        String doubleStr = "1.00000000";
+//        System.out.println(doubleStr.indexOf("."));
+//        doubleStr = doubleStr.substring(0, doubleStr.indexOf("."));
+//        System.out.println(doubleStr);
 
-    public void f1(int a) {
-        a = a + 1;
-        System.out.println(a);
-    }
-
-    public void f2(int[] a) {
-        a[0] = a[0] + 1;
-        System.out.println(a[0]);
+        List<String> list = new ArrayList();
+        for (int i = 0; i < 12; i++) {
+            list.add("测试");
+        }
+        System.out.println(list);
     }
 }

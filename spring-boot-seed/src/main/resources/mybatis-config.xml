@@ -26,7 +26,7 @@
         <!-- 使用驼峰命名法转换字段。 -->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <!--开启二级缓存-->
-        <setting name="cacheEnabled" value="true"/>
+        <!--<setting name="cacheEnabled" value="true"/>-->
     </settings>
     <typeHandlers>
         <typeHandler handler="org.apache.ibatis.type.EnumOrdinalTypeHandler"

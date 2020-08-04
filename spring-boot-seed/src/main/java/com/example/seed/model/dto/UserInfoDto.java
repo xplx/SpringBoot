@@ -16,7 +16,7 @@ public class UserInfoDto {
      */
     @ApiModelProperty("主键id")
     @NotNull(message = "主键id不能为空",groups = {Update.class})
-    private Long id;
+    private String id;
 
     /**
      * 主键id

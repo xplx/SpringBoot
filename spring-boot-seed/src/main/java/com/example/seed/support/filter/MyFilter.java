@@ -4,7 +4,6 @@ package com.example.seed.support.filter;
 import com.example.seed.support.utils.NetworkUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +16,7 @@ import java.util.Map;
  * @author Le0n
  * @date 2019/09/3
  */
-@Component
+//@Component
 @Slf4j
 @ConditionalOnProperty(name = "spring.profiles.active")
 public class MyFilter implements Filter {
