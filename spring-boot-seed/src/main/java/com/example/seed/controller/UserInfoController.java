@@ -27,6 +27,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author wuxiaopeng
@@ -51,6 +52,7 @@ public class UserInfoController {
             return Result.failure().setMsg(bindingResult.getAllErrors().toString());
         }
         Result<List<UserInfo>> r = feignUserService.listPagesForSchool("123");
+
         return r;
     }
 
