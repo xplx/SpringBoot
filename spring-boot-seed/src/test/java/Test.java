@@ -19,6 +19,8 @@ public class Test {
 //        System.out.println(doubleStr);
 
         List<String> list = new ArrayList();
+        int a = 2 / 0;
+        list.get(2);
         for (int i = 0; i < 12; i++) {
             list.add("测试");
         }
