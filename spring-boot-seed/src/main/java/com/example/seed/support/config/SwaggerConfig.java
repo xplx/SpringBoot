@@ -45,8 +45,8 @@ public class SwaggerConfig {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("农产品交易平台 - 团餐系统 - 配送单 API 文档")
-                .description("农产品交易平台 - 团餐系统 - 配送单 API 文档 ，文档地址： /doc.html 或 /swagger-ui.html")
+                .title("API 文档")
+                .description("文档地址： /doc.html 或 /swagger-ui.html")
                 .termsOfServiceUrl("http://www.xxxxx.com")
                 .contact(new Contact("wuxiaopeng", "", ""))
                 .version("1.0.0")

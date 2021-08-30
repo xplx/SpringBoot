@@ -79,7 +79,7 @@ public class BaseController<BaseService extends Service, Entity> {
     @ApiOperation(value = "保存信息（主键id自动生成）")
     public Result save(@Valid  Entity entity, BindingResult bindingResult){
         if (bindingResult.hasErrors()) {
-            return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg(bindingResult.getAllErrors().toString());
+            return Result.failure().setMsg(bindingResult.getAllErrors().toString());
         }
         //使用雪花算法，自动生成主键id
         service.saveSelectiveIdObject(entity);

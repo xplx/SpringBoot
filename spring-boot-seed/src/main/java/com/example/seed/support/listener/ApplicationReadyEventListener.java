@@ -27,11 +27,11 @@ public class ApplicationReadyEventListener implements ApplicationListener<Applic
         log.info(">>>>>> Application Ready .....");
         log.info("================================================================");
         ConfigurableApplicationContext applicationContext = applicationReadyEvent.getApplicationContext();
-        pringRequestMappingHandlerMapping(applicationContext);
+        springRequestMappingHandlerMapping(applicationContext);
     }
 
 
-    private void pringRequestMappingHandlerMapping(ApplicationContext applicationContext) {
+    private void springRequestMappingHandlerMapping(ApplicationContext applicationContext) {
         RequestMappingHandlerMapping mapping = applicationContext.getBean("requestMappingHandlerMapping", RequestMappingHandlerMapping.class);
         Map<RequestMappingInfo, HandlerMethod> map = mapping.getHandlerMethods();
         Iterator<Map.Entry<RequestMappingInfo, HandlerMethod>> it = map.entrySet().iterator();

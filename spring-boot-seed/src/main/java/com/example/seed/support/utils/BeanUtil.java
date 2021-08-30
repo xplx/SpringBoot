@@ -49,6 +49,14 @@ public class BeanUtil {
         }
     }
 
+    /**
+     * 对象转换
+     * @param entity
+     * @param model
+     * @param <M>
+     * @param <E>
+     * @return
+     */
     public static <M, E> M toModel(E entity, M model) {
         if (model != null && entity != null) {
             BeanUtils.copyProperties(entity, model);
@@ -99,16 +107,16 @@ public class BeanUtil {
     }
 
 
-    public static void main(String[] args) {
-        UserInfoVo userInfoVo = new UserInfoVo();
-        userInfoVo.setId(0L);
-        userInfoVo.setName("");
-        userInfoVo.setAge(0);
-        userInfoVo.setPassword("");
-        userInfoVo.setSalary(new BigDecimal("0"));
-        userInfoVo.setCreateTime(new Date());
-        userInfoVo.setUpdateTime(new Date());
-
-        UserInfoDto userInfoDto = copyProperty(userInfoVo, UserInfoDto.class);
-    }
+//    public static void main(String[] args) {
+//        UserInfoVo userInfoVo = new UserInfoVo();
+//        userInfoVo.setId(0L);
+//        userInfoVo.setName("");
+//        userInfoVo.setAge(0);
+//        userInfoVo.setPassword("");
+//        userInfoVo.setSalary(new BigDecimal("0"));
+//        userInfoVo.setCreateTime(new Date());
+//        userInfoVo.setUpdateTime(new Date());
+//
+//        UserInfoDto userInfoDto = copyProperty(userInfoVo, UserInfoDto.class);
+//    }
 }

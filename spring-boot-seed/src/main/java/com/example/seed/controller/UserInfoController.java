@@ -1,12 +1,14 @@
 package com.example.seed.controller;
 
 import com.example.seed.feign.FeignUserService;
-import com.example.seed.mapper.UserMapper;
+import com.example.seed.mapper.AddressMapper;
+import com.example.seed.mapper.UserInfoMapper;
 import com.example.seed.model.dto.UserInfoDto;
 import com.example.seed.model.dto.UserInfoSaveUpdateDto;
 import com.example.seed.model.entity.UserInfo;
 import com.example.seed.model.vo.UserInfoVo;
 import com.example.seed.service.UserInfoService;
+import com.example.seed.support.resubmit.Resubmit;
 import com.example.seed.support.utils.Result;
 import com.example.seed.support.validator.group.Update;
 import com.github.pagehelper.PageHelper;
@@ -24,10 +26,10 @@ import tk.mybatis.mapper.entity.Condition;
 import tk.mybatis.template.annotation.ConditionRewrite;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author wuxiaopeng
@@ -43,7 +45,7 @@ public class UserInfoController {
     @Resource
     private FeignUserService feignUserService;
     @Resource
-    private UserMapper userMapper;
+    private UserInfoMapper userMapper;
 
     @ApiOperation(value = "feign调用测试")
     @GetMapping("/getUserInfo")
@@ -59,7 +61,8 @@ public class UserInfoController {
 
     @ApiOperation(value = "获取信息list，自定义注解查询")
     @GetMapping("/infoList")
-    public Result<UserInfo> infoList(@Validated UserInfoDto userInfo) {
+    @Resubmit(delaySeconds = 10)
+    public Result<UserInfo> infoList(HttpServletRequest request, @Validated UserInfoDto userInfo) {
         List<UserInfoVo> userInfoList = new ArrayList<>();
         //通过注解获取相应的条件信息
         Condition condition = ConditionRewrite.equalToCondition(new Condition(UserInfo.class), userInfo);
@@ -102,8 +105,8 @@ public class UserInfoController {
     @PutMapping("/update")
     //清楚指定key缓存（没有key值，将用接收参数作为key值）
     //@CacheEvict(value = "UserInfo", key = "#userInfo.id")
-    public Result update(UserInfoSaveUpdateDto userInfo) {
-        userMapper.updateUserInfoByKey(userInfo);
+    public Result update(UserInfo userInfo) {
+        userMapper.updateByPrimaryKeySelective(userInfo);
         return Result.ok();
     }
 
@@ -126,8 +129,8 @@ public class UserInfoController {
 
     @ApiOperation(value = "添加或更新信息")
     @PostMapping("/addOrUpdate")
-    public Result addOrUpdate(UserInfo userInfo) {
-        userInfoService.saveOrUpdateKeySelective(userInfo);
+    public Result addOrUpdate(@RequestBody UserInfo userInfo) {
+        userInfoService.saveSelectiveTb(userInfo);
         return Result.ok();
     }
 

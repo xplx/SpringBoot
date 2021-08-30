@@ -9,11 +9,13 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import lombok.Builder;
 import lombok.ToString;
 
 @ToString
 @ApiModel("")
 @Table(name = "user_info")
+@Builder
 public class UserInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 

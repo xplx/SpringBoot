@@ -1,6 +1,4 @@
 package com.example.seed.controller;
-import com.example.seed.model.entity.User;
-import com.example.seed.service.UserService;
 import com.example.seed.support.utils.Result;
 import com.example.seed.model.entity.Location;
 import com.example.seed.service.LocationService;
@@ -10,7 +8,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import io.swagger.annotations.Api;
@@ -32,8 +29,6 @@ import io.swagger.annotations.ApiImplicitParams;
 public class LocationController {
     @Resource
     private LocationService locationService;
-    @Resource
-    private UserService userService;
 
     @ApiOperation(value = "获取信息（通过主键）")
     @GetMapping("/detail")

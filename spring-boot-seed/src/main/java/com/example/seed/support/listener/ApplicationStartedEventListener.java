@@ -1,6 +1,7 @@
 package com.example.seed.support.listener;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.boot.context.event.ApplicationStartingEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -11,11 +12,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class ApplicationStartedEventListener implements ApplicationListener<ApplicationStartingEvent> {
+public class ApplicationStartedEventListener implements ApplicationListener<ApplicationStartedEvent> {
 
     @Override
-    public void onApplicationEvent(ApplicationStartingEvent applicationStartedEvent) {
-        log.info(">>>>>> Application starting .....");
+    public void onApplicationEvent(ApplicationStartedEvent applicationStartedEvent) {
+        log.info(">>>>>> Application started .....");
     }
 
 

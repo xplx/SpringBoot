@@ -3,6 +3,7 @@ package com.example.seed.model.vo;
 import com.example.seed.model.constant.StatusValueEnum;
 import com.example.seed.model.constant.UserInfoStatusEnum;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
+@Builder
 public class UserInfoVo {
     /**
      * 主键id

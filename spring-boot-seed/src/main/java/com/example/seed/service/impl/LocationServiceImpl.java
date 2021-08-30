@@ -2,9 +2,9 @@ package com.example.seed.service.impl;
 
 import com.example.seed.mapper.LocationMapper;
 import com.example.seed.model.entity.Location;
-import com.example.seed.model.entity.User;
+import com.example.seed.service.AddressService;
 import com.example.seed.service.LocationService;
-import com.example.seed.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Propagation;
 import tk.mybatis.template.core.AbstractService;
 import org.springframework.stereotype.Service;
@@ -23,8 +23,30 @@ import java.util.Date;
 public class LocationServiceImpl extends AbstractService<Location> implements LocationService {
     @Resource
     private LocationMapper locationMapper;
-    @Resource
-    private UserService userService;
+    /**
+     * 基于字段的依赖注入
+     */
+//    @Resource
+//    private UserService userService;
+    private AddressService addressService;
+
+    /**
+     * setter注入
+     * @param addressService
+     */
+    @Autowired
+    private void setUserService(AddressService addressService) {
+        this.addressService = addressService;
+    }
+
+    /**
+     * 构造函数注入
+     * @param userService
+     */
+//    @Autowired
+//    public LocationServiceImpl(UserService userService){
+//        this.userService = userService;
+//    }
 
     /**
      * PROPAGATION_REQUIRED(默认实现)：当前没有事务则新建事务，有则加入当前事务
@@ -45,13 +67,6 @@ public class LocationServiceImpl extends AbstractService<Location> implements Lo
 
     @Override
     public void saveLocationPropagation() {
-        User user = new User();
-        user.setName("测试使用");
-        user.setAge(0);
-        user.setEmail("1099@qq.com");
-        user.setCreateDate(new Date());
-        userService.saveUser(user);
-
         Location location = new Location();
         location.setName("测试测试");
         //异常抓取，事物没有回滚

@@ -9,12 +9,15 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -73,6 +76,25 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
     }
 
     /**
+     * 处理请求对象属性不满足校验规则的异常信息
+     *
+     * @param request
+     * @param exception
+     * @return
+     * @throws Exception
+     */
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public Result exception(HttpServletRequest request, MethodArgumentNotValidException exception) {
+        //log.error("bindExceptionErrorHandler info:{}", ex.getMessage());
+        StringBuilder sb = new StringBuilder();
+        for (FieldError fieldError : exception.getBindingResult().getFieldErrors()) {
+            sb.append(fieldError.getDefaultMessage() + ",");
+        }
+        return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg(sb.toString());
+    }
+
+
+    /**
      * 统一处理包装类
      *
      * @param returnType
@@ -84,6 +106,19 @@ public class GlobalExceptionHandler implements ResponseBodyAdvice<Object> {
         return false;
         // 如果接口返回的类型本身就是Result那就没有必要进行额外的操作，返回false
         //return !returnType.getGenericParameterType().equals(Result.class);
+    }
+
+    /**
+     * 重复键异常处理方法。
+     *
+     * @param ex       异常对象。
+     * @param request  http请求。
+     * @return 应答对象。
+     */
+    @ExceptionHandler(value = DuplicateKeyException.class)
+    public Result duplicateKeyExceptionHandle(Exception ex, HttpServletRequest request) {
+        log.error("DuplicateKeyException exception from URL [" + request.getRequestURI() + "]", ex);
+        return Result.failure().setCode(StatusCode.FAILURE.getCode()).setMsg("数据保存失败，存在重复数据，请核对！");
     }
 
     @Override
