@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author wuxiaopeng
  * @description: 测试
@@ -25,13 +27,15 @@ public class UserController {
     private UserService UserService;
 
     @GetMapping("/list")
-    public Object list(Integer id) {
-        return UserService.list(id);
+    public List<User> list(Integer id) {
+        List<User> users = UserService.list(id);
+        System.out.println(users);
+        return users;
     }
 
     @GetMapping("/add")
     public Object add() {
-        for (int i = 100; i < 150; i++) {
+        for (int i = 1; i < 100000; i++) {
             User user = new User();
             user.setId(i);
             user.setUsername("forezp" + (i));

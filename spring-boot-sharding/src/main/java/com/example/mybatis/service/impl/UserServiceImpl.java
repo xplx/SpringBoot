@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author wuxiaopeng
@@ -25,7 +26,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public Object list(Integer id) {
+    public List<User> list(Integer id) {
         UserExample example = new UserExample();
         if (id != 0) {
             example.createCriteria().andIdEqualTo(id);

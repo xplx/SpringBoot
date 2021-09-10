@@ -9,8 +9,8 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface BookDao extends CrudRepository<BookEntity, String> {
-	public List<BookEntity> getByMessage(String key);
-	public Page<BookEntity> getByMessage(String key, Pageable pageable);
+	List<BookEntity> getByMessage(String key);
+	Page<BookEntity> getByMessage(String key, Pageable pageable);
 	@Query("{\"bool\" : {\"must\" : {\"field\" : {\"name\" : \"?0\"}}}}")
     Page<BookEntity> findByName(String name, Pageable pageable);
 }
