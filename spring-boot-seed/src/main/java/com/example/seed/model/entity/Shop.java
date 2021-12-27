@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Data
 @Builder
@@ -25,4 +26,10 @@ public class Shop {
     @Column(name = "name")
     @ApiModelProperty("姓名")
     private String name;
+
+    @ApiModelProperty("创建日期")
+    private Date creationDate;
+
+    @ApiModelProperty("年龄")
+    private Integer age;
 }

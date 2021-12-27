@@ -12,7 +12,6 @@ import javax.annotation.PostConstruct;
  * @date 2021年03月25日 14:18
  * @description
  */
-@SpringBootApplication
 public class DemoApplication {
     @Autowired
     private BeanInitOrder beanInitOrder;
